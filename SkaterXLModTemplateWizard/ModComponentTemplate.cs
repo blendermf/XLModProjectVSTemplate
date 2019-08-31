@@ -18,9 +18,9 @@ namespace SkaterXLModTemplateWizard
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+    #line 1 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class MainTemplate : MainTemplateBase
+    public partial class ModComponentTemplate : ModComponentTemplateBase
     {
 #line hidden
         /// <summary>
@@ -28,309 +28,196 @@ namespace SkaterXLModTemplateWizard
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using UnityEngine;\r\nusing Harmony12;\r\nusing System.Reflection;\r\nusing UnityModMan" +
-                    "agerNet;\r\nusing System;\r\n");
+            this.Write("using UnityEngine;\r\nusing XLShredLib;\r\nusing XLShredLib.UI;\r\n\r\nusing System;\r\nusi" +
+                    "ng System.Linq;\r\n\r\nusing UnityModManagerNet;\r\nusing System.Reflection;\r\n\r\nnamesp" +
+                    "ace ");
             
-            #line 16 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
-
-if (UseModMenu) {
-
-            
-            #line default
-            #line hidden
-            this.Write("using XLShredLib;\r\n");
-            
-            #line 20 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
-
-}
-
-            
-            #line default
-            #line hidden
-            this.Write("\r\nnamespace ");
-            
-            #line 24 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+            #line 18 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModNamespace));
             
             #line default
             #line hidden
-            this.Write(" {\r\n\t");
+            this.Write(" {\r\n    class ");
             
-            #line 25 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
-
-	if (ModSettings) {
-	
+            #line 19 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ModNamespace));
             
             #line default
             #line hidden
-            this.Write(@"	[Serializable]
-	public class Settings : UnityModManager.ModSettings {
-
-
-		/*	
-		========
-		Insert Settings Here. 
-
-		Normal fields/properties can be used here. eg:
-		public float customSetting = 0f;
-		========
-		*/
-
-
-		public Settings() : base() {
-
-
-			/*	
-			========
-			Code ran when settings first loaded
-			========
-			*/
-
-
-		}
-
-		public override void Save(UnityModManager.ModEntry modentry) {
-			UnityModManager.ModSettings.Save<Settings>(this, modEntry);
-		}
-	}
-	");
+            this.Write(" : MonoBehaviour {\r\n\r\n        private ModUIBox uiBox;\r\n\r\n\r\n\t\t/*\r\n\t\t========\r\n\t\tIn" +
+                    "sert mod fields\r\n\t\t========\r\n\t\t*/\r\n\r\n\r\n\t\t");
             
-            #line 58 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+            #line 31 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
 
-	}
-	
+		if (ModMenuExampleCode) {
+		
             
             #line default
             #line hidden
-            this.Write("\r\n\tstatic class Main\r\n\t{\r\n\t\tpublic static bool enabled = false;\r\n\t\tpublic static " +
-                    "Settings settings;\r\n\t\tpublic static String modId;\r\n\t\tpublic static HarmonyInstan" +
-                    "ce harmonyInstance;\r\n\r\n\t\tstatic bool Load(UnityModManager.ModEntry modEntry) {\r\n" +
-                    "\t\t\t");
+            this.Write("\t\t// Example Labels\r\n\t\tprivate ModUIlabel uiLabelTextExample\r\n        private Mod" +
+                    "UILabel uiLabelToggleExample;\r\n\t\tprivate ModUILabel uiLabelButtonExample;\r\n\t\t");
             
-            #line 70 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+            #line 38 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
 
-			if (ModSettings) {
+		}
+		
+            
+            #line default
+            #line hidden
+            this.Write("\r\n        public void Start() {\r\n            uiBox = ModMenu.Instance.RegisterMod" +
+                    "Maker(\"");
+            
+            #line 43 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(AuthorID));
+            
+            #line default
+            #line hidden
+            this.Write("\", \"");
+            
+            #line 43 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(AuthorName));
+            
+            #line default
+            #line hidden
+            this.Write("\");\r\n\r\n\r\n\t\t\t/*\r\n\t\t\t========\r\n\t\t\tInsert mod component setup\r\n\t\t\t========\r\n\t\t\t*/\r\n\r" +
+                    "\n\r\n\t\t\t");
+            
+            #line 53 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+
+			if (ModMenuExampleCode) {
 			
             
             #line default
             #line hidden
-            this.Write("\t\t\tsettings = Settings.Load<Settings>(modEntry);\r\n\t\t\t");
+            this.Write(@"			// Text Label Example
+			uiLabelTextExample = uiBox.AddLabel(""label-text-example, ""A Text Label Example"", Side side,
+											() => true /* label visibility, can control with some logic if you like */, 
+											int priority = 2 /* optional priority setting"")
+
+			// Toggle Label Example
+            uiLabelToggleExample = uiBox.AddLabel(""label-toggle-example"", LabelType.Toggle, ""A Toggle Label Example"", Side.right, 
+													() => true /* label visibility, can control with some logic if you like */, 
+													false /* initial toggle value, eg: Main.settings.someToggle */, 
+													(b) => { /* store toggle value, eg: Main.settings.someToggle = b */ },
+													int priority = 1 /* optional priority setting"");
+
+			// Button Label Example
+            uiLabelButtonExample = uiBox.AddLabel(""label-button-example"", LabelType.Button, ""A Toggle Button Example"", Side.right, 
+													() => true /* label visibility, can control with some logic if you like */, 
+													false /* initial toggle value, eg: Main.settings.someToggle */, 
+													(b) => { /* perform action on click */ },
+													int priority = 0 /* optional priority setting"");
+
+			// Control Timescale Example (only include if you actually want to control that)
+            ModMenu.Instance.RegisterTimeScaleTarget(Main.modId, () => {
+                return 1.0f; // returns the target timescale.
+            });
+			");
             
-            #line 74 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+            #line 79 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
 
 			}
 			
             
             #line default
             #line hidden
-            this.Write("\t\t\tmodId = modEntry.Info.Id;\r\n\t\t\t");
+            this.Write("        }\r\n\r\n        public void Update() {\r\n\t\t\t\r\n\t\t\t\r\n\t\t\t/*\r\n\t\t\t========\r\n\t\t\tRan" +
+                    " every frame\r\n\t\t\t========\r\n\t\t\t*/\r\n\r\n\t\t\t\r\n\t\t\t");
             
-            #line 78 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+            #line 94 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
 
-			if (ModSettings) {
+			if (ModMenuExampleCode) {
 			
             
             #line default
             #line hidden
-            this.Write("\t\t\tmodEntry.OnSaveGUI = OnSaveGUI;\r\n\t\t\t");
+            this.Write(@"
+			// Control Setting with Controller Button
+            if (PlayerController.Instance.inputController.player.GetButtonSinglePressDown(""LB"")) {
+
+					/* You can toggle a setting / toggle label for example
+					=======
+
+                    Main.settings.someToggle = !Main.settings.someToggle;
+                    uiLabelToggleExample.SetToggleValue(Main.settings.someToggle);
+
+                    if (Main.settings.someToggle) {
+                        ModMenu.Instance.ShowMessage(""Toggle Example: ON"");
+                    } else {
+                        ModMenu.Instance.ShowMessage(""Toggle Example: OFF"");
+                    }
+					*/
+
+					/* Or perform an action
+					=======
+					PlayerController.Instance.ForceBail(); // Force Character to Bail
+
+					ModMenu.Instance.HideCursor(Main.modId); // hide cursor
+					ModMenu.Instance.ShowCursor(Main.modId); // show cursor
+					
+					ModMenu.Instance.EnableMenuHide(Main.modId); // temporary menu hide
+					ModMenu.Instance.DisableMenuHide(Main.modId); // disable temporary menu hide
+
+					*/
+
+                }
+            }
+
+			// Control setting with Keypress
+			ModMenu.Instance.KeyPress(KeyCode.X, 0.2f /* time buffer between presses*/, () => {
+
+				// Perform an action (same examples from controller button apply)
+
+            });
+
+			");
             
-            #line 82 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+            #line 136 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
 
 			}
 			
             
             #line default
             #line hidden
-            this.Write(@"			modEntry.OnToggle = OnToggle;
-
-
-			/*	
-			========
-			Code ran when mod is first loaded by UMM (not necesarily enabled, so only use for stuff needed in both enabled and disabled state)
-			========
-			*/
-
-
-			return true;
-		}
-
-		static bool OnToggle(UnityModManager.ModEntry modEntry, bool value) {
-			if (enabled == value) return true; // toggle hasn't actually changed value somehow
-            enabled = value;
-            if (enabled) {
-				// Do patching on enable
-                harmonyInstance = HarmonyInstance.Create(modEntry.Info.Id);
-                harmonyInstance.PatchAll(Assembly.GetExecutingAssembly());
-				");
+            this.Write("        }\r\n\r\n\t\tpublic void FixedUpdate() {\r\n\t\t\t\r\n\t\t\t\r\n\t\t\t/*\r\n\t\t\t========\r\n\t\t\tRan " +
+                    "every physics tick\r\n\t\t\t========\r\n\t\t\t*/\r\n\r\n\t\t\t\r\n\t\t}\r\n\r\n        public void OnDest" +
+                    "roy() {\r\n\t\t\t\r\n\t\t\t\r\n\t\t\t/*\r\n\t\t\t========\r\n\t\t\tClean up component\r\n\t\t\t========\r\n\t\t\t*/" +
+                    "\r\n\r\n\t\t\t\r\n\t\t\t");
             
-            #line 105 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+            #line 163 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
 
-				if (AddModComponent) {
-				
+			if (ModMenuExampleCode) {
+			
             
             #line default
             #line hidden
-            this.Write("\r\n\t\t\t\t// Add component to ModMenu gameObject on enable\r\n                ModMenu.I" +
-                    "nstance.gameObject.AddComponent<");
+            this.Write("\t\t\t// Remove labels from menu\r\n\t\t\tuiBox.RemoveLabel(\"label-text-example\");\r\n     " +
+                    "       uiBox.RemoveLabel(\"label-toggle-example\");\r\n\t\t\tuiBox.RemoveLabel(\"label-b" +
+                    "utton-example\");\r\n\t\t\t");
             
-            #line 110 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ModNamespace));
+            #line 170 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+
+			}
+			
             
             #line default
             #line hidden
-            this.Write(">();\r\n\t\t\t\t");
-            
-            #line 111 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
-
-				}
-				
-            
-            #line default
-            #line hidden
-            this.Write("\r\n\r\n\t\t\t\t/*\t\r\n\t\t\t\t========\r\n\t\t\t\tCode ran when mod enabled\r\n\t\t\t\t========\r\n\t\t\t\t*/\r\n\r" +
-                    "\n\r\n            } else {\r\n\t\t\t\t// Remove patches when disabled\r\n                ha" +
-                    "rmonyInstance.UnpatchAll(harmonyInstance.Id);\r\n\t\t\t\t");
-            
-            #line 126 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
-
-				if (AddModComponent) {
-				
-            
-            #line default
-            #line hidden
-            this.Write("\r\n\t\t\t\t// Remove component from ModMenu gameObject when disabled\r\n                " +
-                    "UnityEngine.Object.Destroy(ModMenu.Instance.gameObject.GetComponent<");
-            
-            #line 131 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ModNamespace));
-            
-            #line default
-            #line hidden
-            this.Write(">());\r\n\t\t\t\t");
-            
-            #line 132 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
-
-				}
-				
-            
-            #line default
-            #line hidden
-            this.Write("\r\n\r\n\t\t\t\t/*\t\r\n\t\t\t\t========\r\n\t\t\t\tCode ran when mod disabled (you should remove chan" +
-                    "ges made on enable)\r\n\t\t\t\t========\r\n\t\t\t\t*/\r\n\r\n\r\n            }\r\n            return" +
-                    " true;\r\n\t\t}\r\n\t\t");
-            
-            #line 147 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
-
-		if (ModSettings) {
-		
-            
-            #line default
-            #line hidden
-            this.Write("\t\tstatic void OnSaveGUI(UnityModManager.ModEntry modEntry) {\r\n            setting" +
-                    "s.Save(modEntry);\r\n\r\n\r\n\t\t\t/*\t\r\n\t\t\t========\r\n\t\t\tPerform any other action when set" +
-                    "tings are saved\r\n\t\t\t========\r\n\t\t\t*/\r\n\r\n\r\n        }\r\n\t\t");
-            
-            #line 162 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
-
-		}
-		
-            
-            #line default
-            #line hidden
-            this.Write("\r\n\t\t");
-            
-            #line 166 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
-
-		if (UMMSettingsGUI) {
-		
-            
-            #line default
-            #line hidden
-            this.Write(@"		public static void OnSettingsGUI(UnityModManager.ModEntry modEntry) {
-
-
-			/*	
-			========
-			Insert GUI Code Here
-
-			use GUILayout (https://docs.unity3d.com/ScriptReference/GUILayout.html) to add controls for settings here. eg:
-
-			GUILayout.BeginHorizontal();
-            GUILayout.Label(""Text Option"");
-            GUILayout.Space(8);
-            TextOption = GUILayout.TextField(TextOption, GUILayout.ExpandWidth(true));
-			GUILayout.EndHorizontal();
-
-			TextOption would be a string field in your Settings class.
-			========
-			*/
-
-
-		}
-		");
-            
-            #line 190 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
-
-		}
-		
-            
-            #line default
-            #line hidden
-            this.Write("\t}\r\n}");
+            this.Write("        }\r\n    }\r\n}\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+        #line 1 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
 
-private bool _UseModMenuField;
+private bool _ModMenuExampleCodeField;
 
 /// <summary>
-/// Access the UseModMenu parameter of the template.
+/// Access the ModMenuExampleCode parameter of the template.
 /// </summary>
-private bool UseModMenu
+private bool ModMenuExampleCode
 {
     get
     {
-        return this._UseModMenuField;
-    }
-}
-
-private bool _ModSettingsField;
-
-/// <summary>
-/// Access the ModSettings parameter of the template.
-/// </summary>
-private bool ModSettings
-{
-    get
-    {
-        return this._ModSettingsField;
-    }
-}
-
-private bool _AddModComponentField;
-
-/// <summary>
-/// Access the AddModComponent parameter of the template.
-/// </summary>
-private bool AddModComponent
-{
-    get
-    {
-        return this._AddModComponentField;
-    }
-}
-
-private bool _UMMSettingsGUIField;
-
-/// <summary>
-/// Access the UMMSettingsGUI parameter of the template.
-/// </summary>
-private bool UMMSettingsGUI
-{
-    get
-    {
-        return this._UMMSettingsGUIField;
+        return this._ModMenuExampleCodeField;
     }
 }
 
@@ -355,60 +242,18 @@ public virtual void Initialize()
 {
     if ((this.Errors.HasErrors == false))
     {
-bool UseModMenuValueAcquired = false;
-if (this.Session.ContainsKey("UseModMenu"))
+bool ModMenuExampleCodeValueAcquired = false;
+if (this.Session.ContainsKey("ModMenuExampleCode"))
 {
-    this._UseModMenuField = ((bool)(this.Session["UseModMenu"]));
-    UseModMenuValueAcquired = true;
+    this._ModMenuExampleCodeField = ((bool)(this.Session["ModMenuExampleCode"]));
+    ModMenuExampleCodeValueAcquired = true;
 }
-if ((UseModMenuValueAcquired == false))
+if ((ModMenuExampleCodeValueAcquired == false))
 {
-    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("UseModMenu");
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("ModMenuExampleCode");
     if ((data != null))
     {
-        this._UseModMenuField = ((bool)(data));
-    }
-}
-bool ModSettingsValueAcquired = false;
-if (this.Session.ContainsKey("ModSettings"))
-{
-    this._ModSettingsField = ((bool)(this.Session["ModSettings"]));
-    ModSettingsValueAcquired = true;
-}
-if ((ModSettingsValueAcquired == false))
-{
-    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("ModSettings");
-    if ((data != null))
-    {
-        this._ModSettingsField = ((bool)(data));
-    }
-}
-bool AddModComponentValueAcquired = false;
-if (this.Session.ContainsKey("AddModComponent"))
-{
-    this._AddModComponentField = ((bool)(this.Session["AddModComponent"]));
-    AddModComponentValueAcquired = true;
-}
-if ((AddModComponentValueAcquired == false))
-{
-    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("AddModComponent");
-    if ((data != null))
-    {
-        this._AddModComponentField = ((bool)(data));
-    }
-}
-bool UMMSettingsGUIValueAcquired = false;
-if (this.Session.ContainsKey("UMMSettingsGUI"))
-{
-    this._UMMSettingsGUIField = ((bool)(this.Session["UMMSettingsGUI"]));
-    UMMSettingsGUIValueAcquired = true;
-}
-if ((UMMSettingsGUIValueAcquired == false))
-{
-    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("UMMSettingsGUI");
-    if ((data != null))
-    {
-        this._UMMSettingsGUIField = ((bool)(data));
+        this._ModMenuExampleCodeField = ((bool)(data));
     }
 }
 bool ModNamespaceValueAcquired = false;
@@ -443,7 +288,7 @@ if ((ModNamespaceValueAcquired == false))
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public class MainTemplateBase
+    public class ModComponentTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

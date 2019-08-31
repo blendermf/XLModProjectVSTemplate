@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Main.cs" />
+    <None Include="ModComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

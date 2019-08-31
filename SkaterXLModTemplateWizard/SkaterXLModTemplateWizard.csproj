@@ -56,6 +56,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MainTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="ModComponentTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModComponentTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WizardForm.xaml.cs">
       <DependentUpon>WizardForm.xaml</DependentUpon>
@@ -72,6 +77,10 @@
     <Content Include="MainTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>MainTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModComponentTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ModComponentTemplate.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

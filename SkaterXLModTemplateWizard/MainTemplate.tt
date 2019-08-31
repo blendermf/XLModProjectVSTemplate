@@ -27,13 +27,28 @@ namespace <#= ModNamespace #> {
 	#>
 	[Serializable]
 	public class Settings : UnityModManager.ModSettings {
-		/*
-		Add settings here. Normal fields/properties can be used here. eg:
+
+
+		/*	
+		========
+		Insert Settings Here. 
+
+		Normal fields/properties can be used here. eg:
 		public float customSetting = 0f;
+		========
 		*/
 
+
 		public Settings() : base() {
-			// Anything you want to do when the mod settings are first loaded
+
+
+			/*	
+			========
+			Code ran when settings first loaded
+			========
+			*/
+
+
 		}
 
 		public override void Save(UnityModManager.ModEntry modentry) {
@@ -51,7 +66,6 @@ namespace <#= ModNamespace #> {
 		public static String modId;
 		public static HarmonyInstance harmonyInstance;
 
-		// runs when mod is loaded by UMM (but not necessarily enabled)
 		static bool Load(UnityModManager.ModEntry modEntry) {
 			<#
 			if (ModSettings) {
@@ -69,6 +83,15 @@ namespace <#= ModNamespace #> {
 			}
 			#>
 			modEntry.OnToggle = OnToggle;
+
+
+			/*	
+			========
+			Code ran when mod is first loaded by UMM (not necesarily enabled, so only use for stuff needed in both enabled and disabled state)
+			========
+			*/
+
+
 			return true;
 		}
 
@@ -84,12 +107,19 @@ namespace <#= ModNamespace #> {
 				#>
 
 				// Add component to ModMenu gameObject on enable
-                ModMenu.Instance.gameObject.AddComponent<XLShredFixedSlowmo>();
+                ModMenu.Instance.gameObject.AddComponent<<#= ModNamespace #>>();
 				<#
 				}
 				#>
 
-				// Do anything else you want when mod is enabled
+
+				/*	
+				========
+				Code ran when mod enabled
+				========
+				*/
+
+
             } else {
 				// Remove patches when disabled
                 harmonyInstance.UnpatchAll(harmonyInstance.Id);
@@ -98,12 +128,19 @@ namespace <#= ModNamespace #> {
 				#>
 
 				// Remove component from ModMenu gameObject when disabled
-                UnityEngine.Object.Destroy(ModMenu.Instance.gameObject.GetComponent<XLShredFixedSlowmo>());
+                UnityEngine.Object.Destroy(ModMenu.Instance.gameObject.GetComponent<<#= ModNamespace #>>());
 				<#
 				}
 				#>
 
-				// Do anything else you want when mod is disabled
+
+				/*	
+				========
+				Code ran when mod disabled (you should remove changes made on enable)
+				========
+				*/
+
+
             }
             return true;
 		}
@@ -112,7 +149,15 @@ namespace <#= ModNamespace #> {
 		#>
 		static void OnSaveGUI(UnityModManager.ModEntry modEntry) {
             settings.Save(modEntry);
-            // Perform any other action when settings are saved from UMM GUI
+
+
+			/*	
+			========
+			Perform any other action when settings are saved
+			========
+			*/
+
+
         }
 		<#
 		}
@@ -122,7 +167,13 @@ namespace <#= ModNamespace #> {
 		if (UMMSettingsGUI) {
 		#>
 		public static void OnSettingsGUI(UnityModManager.ModEntry modEntry) {
-			/* use GUILayout (https://docs.unity3d.com/ScriptReference/GUILayout.html) to add controls for settings here. eg:
+
+
+			/*	
+			========
+			Insert GUI Code Here
+
+			use GUILayout (https://docs.unity3d.com/ScriptReference/GUILayout.html) to add controls for settings here. eg:
 
 			GUILayout.BeginHorizontal();
             GUILayout.Label("Text Option");
@@ -131,7 +182,10 @@ namespace <#= ModNamespace #> {
 			GUILayout.EndHorizontal();
 
 			TextOption would be a string field in your Settings class.
+			========
 			*/
+
+
 		}
 		<#
 		}

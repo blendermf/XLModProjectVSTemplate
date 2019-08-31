@@ -39,10 +39,10 @@ namespace SkaterXLModTemplateWizard {
 
                 Dictionary<string, object> templateParameters = new Dictionary<string, object>();
 
-                templateParameters.Add("UseModMenu", true);
-                templateParameters.Add("ModSettings", true);
-                templateParameters.Add("AddModComponent", true);
-                templateParameters.Add("UMMSettingsGUI", true);
+                templateParameters.Add("UseModMenu", form.UseModMenu.IsChecked ?? false);
+                templateParameters.Add("ModSettings", form.ModSettings.IsChecked ?? false);
+                templateParameters.Add("AddModComponent", (form.UseModMenu.IsChecked ?? false) && (form.AddModComponent.IsChecked ?? false) );
+                templateParameters.Add("UMMSettingsGUI", (form.ModSettings.IsChecked ?? false) && (form.UMMSettingsGUI.IsChecked ?? false) );
                 templateParameters.Add("ModNamespace", replacementsDictionary["$safeprojectname$"]);
 
                 MainTemplate mainTemplate = new MainTemplate();
