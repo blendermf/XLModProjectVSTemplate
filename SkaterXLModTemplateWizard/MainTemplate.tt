@@ -1,0 +1,140 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ parameter name="UseModMenu" type="System.Boolean" #>
+<#@ parameter name="ModSettings" type="System.Boolean" #>
+<#@ parameter name="AddModComponent" type="System.Boolean" #>
+<#@ parameter name="UMMSettingsGUI" type="System.Boolean" #>
+<#@ parameter name="ModNamespace" type="System.String" #>
+using UnityEngine;
+using Harmony12;
+using System.Reflection;
+using UnityModManagerNet;
+using System;
+<#
+if (UseModMenu) {
+#>
+using XLShredLib;
+<#
+}
+#>
+
+namespace <#= ModNamespace #> {
+	<#
+	if (ModSettings) {
+	#>
+	[Serializable]
+	public class Settings : UnityModManager.ModSettings {
+		/*
+		Add settings here. Normal fields/properties can be used here. eg:
+		public float customSetting = 0f;
+		*/
+
+		public Settings() : base() {
+			// Anything you want to do when the mod settings are first loaded
+		}
+
+		public override void Save(UnityModManager.ModEntry modentry) {
+			UnityModManager.ModSettings.Save<Settings>(this, modEntry);
+		}
+	}
+	<#
+	}
+	#>
+
+	static class Main
+	{
+		public static bool enabled = false;
+		public static Settings settings;
+		public static String modId;
+		public static HarmonyInstance harmonyInstance;
+
+		// runs when mod is loaded by UMM (but not necessarily enabled)
+		static bool Load(UnityModManager.ModEntry modEntry) {
+			<#
+			if (ModSettings) {
+			#>
+			settings = Settings.Load<Settings>(modEntry);
+			<#
+			}
+			#>
+			modId = modEntry.Info.Id;
+			<#
+			if (ModSettings) {
+			#>
+			modEntry.OnSaveGUI = OnSaveGUI;
+			<#
+			}
+			#>
+			modEntry.OnToggle = OnToggle;
+			return true;
+		}
+
+		static bool OnToggle(UnityModManager.ModEntry modEntry, bool value) {
+			if (enabled == value) return true; // toggle hasn't actually changed value somehow
+            enabled = value;
+            if (enabled) {
+				// Do patching on enable
+                harmonyInstance = HarmonyInstance.Create(modEntry.Info.Id);
+                harmonyInstance.PatchAll(Assembly.GetExecutingAssembly());
+				<#
+				if (AddModComponent) {
+				#>
+
+				// Add component to ModMenu gameObject on enable
+                ModMenu.Instance.gameObject.AddComponent<XLShredFixedSlowmo>();
+				<#
+				}
+				#>
+
+				// Do anything else you want when mod is enabled
+            } else {
+				// Remove patches when disabled
+                harmonyInstance.UnpatchAll(harmonyInstance.Id);
+				<#
+				if (AddModComponent) {
+				#>
+
+				// Remove component from ModMenu gameObject when disabled
+                UnityEngine.Object.Destroy(ModMenu.Instance.gameObject.GetComponent<XLShredFixedSlowmo>());
+				<#
+				}
+				#>
+
+				// Do anything else you want when mod is disabled
+            }
+            return true;
+		}
+		<#
+		if (ModSettings) {
+		#>
+		static void OnSaveGUI(UnityModManager.ModEntry modEntry) {
+            settings.Save(modEntry);
+            // Perform any other action when settings are saved from UMM GUI
+        }
+		<#
+		}
+		#>
+
+		<#
+		if (UMMSettingsGUI) {
+		#>
+		public static void OnSettingsGUI(UnityModManager.ModEntry modEntry) {
+			/* use GUILayout (https://docs.unity3d.com/ScriptReference/GUILayout.html) to add controls for settings here. eg:
+
+			GUILayout.BeginHorizontal();
+            GUILayout.Label("Text Option");
+            GUILayout.Space(8);
+            TextOption = GUILayout.TextField(TextOption, GUILayout.ExpandWidth(true));
+			GUILayout.EndHorizontal();
+
+			TextOption would be a string field in your Settings class.
+			*/
+		}
+		<#
+		}
+		#>
+	}
+}

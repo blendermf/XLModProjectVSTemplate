@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+  <TemplateData>
+    <Name>SkaterXLModTemplate</Name>
+    <Description>SkaterXLModTemplate</Description>
+    <Icon>SkaterXLModTemplate.ico</Icon>
+    <ProjectType>CSharp</ProjectType>
+    <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>
+    <SortOrder>1000</SortOrder>
+    <TemplateID>3ffbda41-cf87-40e3-bb22-e1f585211e68</TemplateID>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>SkaterXLModTemplate</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+  </TemplateData>
+  <TemplateContent>
+    <Project File="ProjectTemplate.csproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="Properties\AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" OpenInEditor="true">Main.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+  <WizardExtension>
+    <Assembly>SkaterXLModTemplateWizard, Version=1.0.0.0, Culture=Neutral, PublicKeyToken=f3eb023e391c08d4</Assembly>
+    <FullClassName>SkaterXLModTemplateWizard.WizardImplementation</FullClassName>
+  </WizardExtension>
+</VSTemplate>
