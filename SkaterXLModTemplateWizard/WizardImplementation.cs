@@ -7,7 +7,7 @@ using EnvDTE;
 namespace SkaterXLModTemplateWizard {
     class WizardImplementation : IWizard {
 
-        private UserInputForm inputForm;
+        //private UserInputForm inputForm;
         private string customMessage;
 
         // Called before opening an item that has OpenInEditor attribute.
@@ -34,8 +34,8 @@ namespace SkaterXLModTemplateWizard {
             Dictionary<string, string> replacementsDictionary,
             WizardRunKind runKind, object[] customParams) {
             try {
-                //inputForm = new UserInputForm();
-                //inputForm.ShowDialog();
+                WizardForm form = new WizardForm();
+                form.ShowDialog();
 
                 Dictionary<string, object> templateParameters = new Dictionary<string, object>();
 
