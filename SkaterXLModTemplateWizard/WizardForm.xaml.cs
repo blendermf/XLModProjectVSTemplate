@@ -56,6 +56,8 @@ namespace SkaterXLModTemplateWizard {
         private void UseModMenu_Changed(object sender, RoutedEventArgs e) {
             AddModComponent.IsEnabled = UseModMenu.IsChecked ?? false;
             AddModComponent.IsChecked = false;
+            ModMenuSampleCode.IsEnabled = UseModMenu.IsChecked ?? false;
+            ModMenuSampleCode.IsChecked = false;
         }
 
         private void ModSettings_Changed(object sender, RoutedEventArgs e) {

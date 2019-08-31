@@ -8,7 +8,7 @@
              ResizeMode="NoResize"
              MinWidth="500"
              Title="Mod Configuration"
-             mc:Ignorable="d" d:DesignWidth="735" Width="735" Height="440">
+             mc:Ignorable="d" d:DesignWidth="735" Width="735" Height="659">
     <Grid Margin="20">
         <Grid.Resources>
             <Style TargetType="{x:Type Button}">
@@ -79,9 +79,9 @@
             <StackPanel Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2">
                 <CheckBox Name="UseModMenu" Checked="UseModMenu_Changed" Unchecked="UseModMenu_Changed">Use Mod Menu</CheckBox>
                 <CheckBox Name="AddModComponent" IsEnabled="False">Add Mod Component to ModMenu GameObject</CheckBox>
+                <CheckBox Name="ModMenuSampleCode" Checked="ModSettings_Changed" Unchecked="ModSettings_Changed" IsEnabled="False">Mod Menu Example Code</CheckBox>
                 <CheckBox Name="ModSettings" Checked="ModSettings_Changed" Unchecked="ModSettings_Changed">Include Mod Settings</CheckBox>
                 <CheckBox Name="UMMSettingsGUI" IsEnabled="False">Include Unity Mod Manager Settings GUI</CheckBox>
-                <CheckBox Name="ModMenuSampleCode" Checked="ModSettings_Changed" Unchecked="ModSettings_Changed">Mod Menu Example Code</CheckBox>
                 <CheckBox Name="PatchSampleCode">Patch Example Code</CheckBox>
             </StackPanel>
             <Label Grid.Column="0" Grid.Row="6" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,5,20,5">SkaterXL Game Directory:</Label>
