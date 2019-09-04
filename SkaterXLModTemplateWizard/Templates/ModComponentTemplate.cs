@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace SkaterXLModTemplateWizard
+namespace SkaterXLModTemplateWizard.Templates
 {
     using System.Linq;
     using System.Text;
@@ -18,7 +18,7 @@ namespace SkaterXLModTemplateWizard
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+    #line 1 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
     public partial class ModComponentTemplate : ModComponentTemplateBase
     {
@@ -31,14 +31,14 @@ namespace SkaterXLModTemplateWizard
             this.Write("using UnityEngine;\r\nusing XLShredLib;\r\nusing XLShredLib.UI;\r\n\r\nusing System;\r\nusi" +
                     "ng System.Linq;\r\n\r\nnamespace ");
             
-            #line 17 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+            #line 17 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModNamespace));
             
             #line default
             #line hidden
             this.Write(" {\r\n\r\n    class ");
             
-            #line 19 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+            #line 19 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModNamespace));
             
             #line default
@@ -46,7 +46,7 @@ namespace SkaterXLModTemplateWizard
             this.Write(" : MonoBehaviour {\r\n\r\n        private ModUIBox uiBox;\r\n\r\n\r\n\t\t/*\r\n\t\t========\r\n\t\tIn" +
                     "sert mod fields\r\n\t\t========\r\n\t\t*/\r\n\r\n\r\n ");
             
-            #line 31 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+            #line 31 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
  if (ModMenuExampleCode) { 
             
             #line default
@@ -54,7 +54,7 @@ namespace SkaterXLModTemplateWizard
             this.Write("\t\t// Example Labels\r\n\t\tprivate ModUIlabel uiLabelTextExample;\r\n        private Mo" +
                     "dUILabel uiLabelToggleExample;\r\n\t\tprivate ModUILabel uiLabelButtonExample;\r\n\r\n ");
             
-            #line 37 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+            #line 37 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
  } 
             
             #line default
@@ -62,14 +62,14 @@ namespace SkaterXLModTemplateWizard
             this.Write("        public void Start() {\r\n\r\n            uiBox = ModMenu.Instance.RegisterMod" +
                     "Maker(\"");
             
-            #line 40 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+            #line 40 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AuthorID));
             
             #line default
             #line hidden
             this.Write("\", \"");
             
-            #line 40 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+            #line 40 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AuthorName));
             
             #line default
@@ -77,7 +77,7 @@ namespace SkaterXLModTemplateWizard
             this.Write("\");\r\n\r\n\r\n\t\t\t/*\r\n\t\t\t========\r\n\t\t\tInsert mod component setup\r\n\t\t\t========\r\n\t\t\t*/\r\n\r" +
                     "\n\r\n ");
             
-            #line 50 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+            #line 50 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
  if (ModMenuExampleCode) { 
             
             #line default
@@ -108,7 +108,7 @@ namespace SkaterXLModTemplateWizard
 
  ");
             
-            #line 75 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+            #line 75 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
  } 
             
             #line default
@@ -116,7 +116,7 @@ namespace SkaterXLModTemplateWizard
             this.Write("        }\r\n\r\n        public void Update() {\r\n\t\t\t\r\n\t\t\t\r\n\t\t\t/*\r\n\t\t\t========\r\n\t\t\tRan" +
                     " every frame\r\n\t\t\t========\r\n\t\t\t*/\r\n\r\n\t\t\t\r\n ");
             
-            #line 88 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+            #line 88 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
  if (ModMenuExampleCode) { 
             
             #line default
@@ -162,7 +162,7 @@ namespace SkaterXLModTemplateWizard
 
  ");
             
-            #line 128 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+            #line 128 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
  } 
             
             #line default
@@ -172,7 +172,7 @@ namespace SkaterXLModTemplateWizard
                     "roy() {\r\n\t\t\t\r\n\t\t\t\r\n\t\t\t/*\r\n\t\t\t========\r\n\t\t\tClean up component\r\n\t\t\t========\r\n\t\t\t*/" +
                     "\r\n\r\n\t\t\t\r\n ");
             
-            #line 153 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+            #line 153 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
  if (ModMenuExampleCode) { 
             
             #line default
@@ -181,7 +181,7 @@ namespace SkaterXLModTemplateWizard
                     "       uiBox.RemoveLabel(\"label-toggle-example\");\r\n\t\t\tuiBox.RemoveLabel(\"label-b" +
                     "utton-example\");\r\n\r\n ");
             
-            #line 159 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+            #line 159 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
  } 
             
             #line default
@@ -190,7 +190,7 @@ namespace SkaterXLModTemplateWizard
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+        #line 1 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
 
 private bool _ModMenuExampleCodeField;
 

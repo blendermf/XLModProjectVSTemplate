@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace SkaterXLModTemplateWizard
+namespace SkaterXLModTemplateWizard.Templates
 {
     using System.Linq;
     using System.Text;
@@ -18,7 +18,7 @@ namespace SkaterXLModTemplateWizard
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+    #line 1 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\MainTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
     public partial class MainTemplate : MainTemplateBase
     {
@@ -31,28 +31,28 @@ namespace SkaterXLModTemplateWizard
             this.Write("using UnityEngine;\r\nusing Harmony12;\r\nusing System.Reflection;\r\nusing UnityModMan" +
                     "agerNet;\r\nusing System;\r\n");
             
-            #line 16 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+            #line 16 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\MainTemplate.tt"
  if (UseModMenu) { 
             
             #line default
             #line hidden
             this.Write("using XLShredLib;\r\n");
             
-            #line 18 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+            #line 18 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\MainTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\r\nnamespace ");
             
-            #line 20 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+            #line 20 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\MainTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModNamespace));
             
             #line default
             #line hidden
             this.Write(" {\r\n\r\n");
             
-            #line 22 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+            #line 22 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\MainTemplate.tt"
  if (ModSettings) { 
             
             #line default
@@ -92,7 +92,7 @@ namespace SkaterXLModTemplateWizard
 
 ");
             
-            #line 56 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+            #line 56 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\MainTemplate.tt"
  } 
             
             #line default
@@ -102,28 +102,28 @@ namespace SkaterXLModTemplateWizard
                     "ce harmonyInstance;\r\n\r\n\t\tstatic bool Load(UnityModManager.ModEntry modEntry) {\r\n" +
                     "\r\n");
             
-            #line 67 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+            #line 67 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\MainTemplate.tt"
  if (ModSettings) { 
             
             #line default
             #line hidden
             this.Write("\t\t\tsettings = Settings.Load<Settings>(modEntry);\r\n");
             
-            #line 69 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+            #line 69 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\MainTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\t\t\tmodId = modEntry.Info.Id;\r\n");
             
-            #line 71 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+            #line 71 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\MainTemplate.tt"
  if (ModSettings) { 
             
             #line default
             #line hidden
             this.Write("\t\t\tmodEntry.OnSaveGUI = OnSaveGUI;\r\n");
             
-            #line 73 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+            #line 73 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\MainTemplate.tt"
  } 
             
             #line default
@@ -153,7 +153,7 @@ namespace SkaterXLModTemplateWizard
                 harmonyInstance.PatchAll(Assembly.GetExecutingAssembly());
 ");
             
-            #line 97 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+            #line 97 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\MainTemplate.tt"
  if (AddModComponent) { 
             
             #line default
@@ -161,14 +161,14 @@ namespace SkaterXLModTemplateWizard
             this.Write("\r\n\t\t\t\t// Add component to ModMenu gameObject on enable\r\n                ModMenu.I" +
                     "nstance.gameObject.AddComponent<");
             
-            #line 100 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+            #line 100 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\MainTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModNamespace));
             
             #line default
             #line hidden
             this.Write(">();\r\n");
             
-            #line 101 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+            #line 101 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\MainTemplate.tt"
  } 
             
             #line default
@@ -177,7 +177,7 @@ namespace SkaterXLModTemplateWizard
                     "\n\r\n            } else {\r\n\t\t\t\t// Remove patches when disabled\r\n                ha" +
                     "rmonyInstance.UnpatchAll(harmonyInstance.Id);\r\n");
             
-            #line 114 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+            #line 114 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\MainTemplate.tt"
  if (AddModComponent) { 
             
             #line default
@@ -185,14 +185,14 @@ namespace SkaterXLModTemplateWizard
             this.Write("\r\n\t\t\t\t// Remove component from ModMenu gameObject when disabled\r\n                " +
                     "UnityEngine.Object.Destroy(ModMenu.Instance.gameObject.GetComponent<");
             
-            #line 117 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+            #line 117 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\MainTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModNamespace));
             
             #line default
             #line hidden
             this.Write(">());\r\n");
             
-            #line 118 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+            #line 118 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\MainTemplate.tt"
  } 
             
             #line default
@@ -201,7 +201,7 @@ namespace SkaterXLModTemplateWizard
                     "ges made on enable)\r\n\t\t\t\t========\r\n\t\t\t\t*/\r\n\r\n\r\n            }\r\n\r\n            retu" +
                     "rn true;\r\n\r\n\t\t}\r\n\r\n");
             
-            #line 134 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+            #line 134 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\MainTemplate.tt"
  if (ModSettings) { 
             
             #line default
@@ -210,13 +210,13 @@ namespace SkaterXLModTemplateWizard
                     "s.Save(modEntry);\r\n\r\n\r\n\t\t\t/*\t\r\n\t\t\t========\r\n\t\t\tPerform any other action when set" +
                     "tings are saved\r\n\t\t\t========\r\n\t\t\t*/\r\n\r\n\r\n        }\r\n");
             
-            #line 147 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+            #line 147 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\MainTemplate.tt"
  } 
             
             #line default
             #line hidden
             
-            #line 148 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+            #line 148 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\MainTemplate.tt"
  if (UMMSettingsGUI) {
             
             #line default
@@ -245,7 +245,7 @@ namespace SkaterXLModTemplateWizard
 
 ");
             
-            #line 171 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+            #line 171 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\MainTemplate.tt"
  } 
             
             #line default
@@ -254,7 +254,7 @@ namespace SkaterXLModTemplateWizard
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\MainTemplate.tt"
+        #line 1 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\MainTemplate.tt"
 
 private bool _UseModMenuField;
 

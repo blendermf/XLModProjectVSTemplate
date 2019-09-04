@@ -51,12 +51,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BaseDialogWindow.cs" />
-    <Compile Include="MainTemplate.cs">
+    <Compile Include="Templates\BaseTemplate.cs" />
+    <Compile Include="Templates\InfoTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InfoTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\MainTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MainTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModComponentTemplate.cs">
+    <Compile Include="Templates\ModComponentTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModComponentTemplate.tt</DependentUpon>
@@ -74,11 +80,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MainTemplate.tt">
+    <Content Include="Templates\InfoTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>InfoTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\MainTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>MainTemplate.cs</LastGenOutput>
     </Content>
-    <Content Include="ModComponentTemplate.tt">
+    <Content Include="Templates\ModComponentTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ModComponentTemplate.cs</LastGenOutput>
     </Content>

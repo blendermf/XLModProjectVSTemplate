@@ -74,7 +74,7 @@
             <Label Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,5,20,5">Mod Homepage:</Label>
             <TextBox Name="ModHomepage" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Text="https://github.com/myname/modname"></TextBox>
             <Label Grid.Column="0" Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,5,20,5">Mod Update Repository:</Label>
-            <TextBox Name="ModRep" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Text="https://github.com/myname/modname/repository.json"></TextBox>
+            <TextBox Name="ModRepo" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Text="https://github.com/myname/modname/repository.json"></TextBox>
             <Label Grid.Column="0" Grid.Row="5" HorizontalAlignment="Right">Options:</Label>
             <StackPanel Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2">
                 <CheckBox Name="UseModMenu" Checked="UseModMenu_Changed" Unchecked="UseModMenu_Changed">Use Mod Menu</CheckBox>
@@ -92,6 +92,6 @@
             <Button Name="SteamBrowse" Grid.Column="2" Grid.Row="7" Click="SteamBrowse_Click">Browse...</Button>
         </Grid>
         <Button Name="Cancel" Grid.Column="1" Grid.Row="1" Click="Cancel_Click">Cancel</Button>
-        <Button Name="Submit" Grid.Column="2" Grid.Row="1" Margin="10,21,0,0" VerticalAlignment="Top" Click="Submit_Click">Submit</Button>
+        <Button Name="Submit" Grid.Column="2" Grid.Row="1" Margin="10,21,0,0" VerticalAlignment="Top" Click="Submit_Click" IsDefault="True">Submit</Button>
     </Grid>
 </local:BaseDialogWindow>

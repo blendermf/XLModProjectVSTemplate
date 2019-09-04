@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 
+
 namespace SkaterXLModTemplateWizard {
     /// <summary>
     /// Interaction logic for WizardForm.xaml
@@ -21,6 +22,12 @@ namespace SkaterXLModTemplateWizard {
     public partial class WizardForm {
         public WizardForm() {
             InitializeComponent();
+        }
+
+        public static bool CheckURL(string url) {
+            Uri uriResult;
+            return Uri.TryCreate(url.Trim(), UriKind.Absolute, out uriResult)
+                && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e) {
@@ -46,6 +53,18 @@ namespace SkaterXLModTemplateWizard {
             if (AuthorName.Text.Trim() == "") {
                 MessageBox.Show("Author Name required!", "Error");
                 valid = false;
+            }
+            if (ModHomepage.Text.Trim() != "") {
+                if (!CheckURL(ModHomepage.Text)) {
+                    MessageBox.Show("Invalid URL! Mod Homepage must either be left blank, or a valid url");
+                    valid = false;
+                }
+            }
+            if (ModRepo.Text.Trim() != "") {
+                if (!CheckURL(ModRepo.Text)) {
+                    MessageBox.Show("Invalid URL! Mod Repo must either be left blank, or a valid url");
+                    valid = false;
+                }
             }
 
             if (valid) {

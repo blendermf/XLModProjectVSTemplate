@@ -55,8 +55,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Main.cs" />
-    <None Include="ModComponent.cs" />
+    <None Include="Info.json.template" />
+    <None Include="Main.cs.template" />
+    <None Include="ModComponent.cs.template" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

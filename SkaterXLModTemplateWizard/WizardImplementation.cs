@@ -5,6 +5,8 @@ using System.Windows.Forms;
 using EnvDTE;
 
 namespace SkaterXLModTemplateWizard {
+    using Templates;
+
     class WizardImplementation : IWizard {
 
         // Called before opening an item that has OpenInEditor attribute.
@@ -44,6 +46,9 @@ namespace SkaterXLModTemplateWizard {
                 templateParameters.Add("ModNamespace", replacementsDictionary["$safeprojectname$"]);
                 templateParameters.Add("AuthorID",form.AuthorID.Text);
                 templateParameters.Add("AuthorName", form.AuthorName.Text);
+                templateParameters.Add("DisplayName", form.DisplayName.Text);
+                templateParameters.Add("ModHomepage", form.ModHomepage.Text);
+                templateParameters.Add("ModRepo", form.ModRepo.Text);
 
                 MainTemplate mainTemplate = new MainTemplate();
                 mainTemplate.Session = templateParameters;
@@ -56,6 +61,12 @@ namespace SkaterXLModTemplateWizard {
                 modComponentTemplate.Initialize();
                 string modComponentContent = modComponentTemplate.TransformText();
                 replacementsDictionary.Add("$modcomponentcontent$", modComponentContent);
+
+                InfoTemplate infoTemplate = new InfoTemplate();
+                infoTemplate.Session = templateParameters;
+                infoTemplate.Initialize();
+                string infoContent = infoTemplate.TransformText();
+                replacementsDictionary.Add("$infocontent$", infoContent);
 
             }
             catch (Exception ex) {
