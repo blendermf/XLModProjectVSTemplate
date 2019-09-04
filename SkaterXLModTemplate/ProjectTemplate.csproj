@@ -45,7 +45,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Include="Main.cs" />
-
+    <Compile Include="$safeprojectname$.cs" />
 		<Compile Include="Properties\AssemblyInfo.cs" />
 	</ItemGroup>
 	<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

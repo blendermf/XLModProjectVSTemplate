@@ -5,6 +5,8 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ parameter name="ModMenuExampleCode" type="System.Boolean" #>
 <#@ parameter name="ModNamespace" type="System.String" #>
+<#@ parameter name="AuthorID" type="System.String" #>
+<#@ parameter name="AuthorName" type="System.String" #>
 using UnityEngine;
 using XLShredLib;
 using XLShredLib.UI;
@@ -12,10 +14,8 @@ using XLShredLib.UI;
 using System;
 using System.Linq;
 
-using UnityModManagerNet;
-using System.Reflection;
-
 namespace <#= ModNamespace #> {
+
     class <#= ModNamespace #> : MonoBehaviour {
 
         private ModUIBox uiBox;
@@ -28,18 +28,15 @@ namespace <#= ModNamespace #> {
 		*/
 
 
-		<#
-		if (ModMenuExampleCode) {
-		#>
+ <# if (ModMenuExampleCode) { #>
 		// Example Labels
-		private ModUIlabel uiLabelTextExample
+		private ModUIlabel uiLabelTextExample;
         private ModUILabel uiLabelToggleExample;
 		private ModUILabel uiLabelButtonExample;
-		<#
-		}
-		#>
 
+ <# } #>
         public void Start() {
+
             uiBox = ModMenu.Instance.RegisterModMaker("<#= AuthorID #>", "<#= AuthorName #>");
 
 
@@ -50,35 +47,32 @@ namespace <#= ModNamespace #> {
 			*/
 
 
-			<#
-			if (ModMenuExampleCode) {
-			#>
+ <# if (ModMenuExampleCode) { #>
 			// Text Label Example
 			uiLabelTextExample = uiBox.AddLabel("label-text-example, "A Text Label Example", Side side,
 											() => true /* label visibility, can control with some logic if you like */, 
-											int priority = 2 /* optional priority setting")
+											int priority = 2 /* optional priority setting */)
 
 			// Toggle Label Example
             uiLabelToggleExample = uiBox.AddLabel("label-toggle-example", LabelType.Toggle, "A Toggle Label Example", Side.right, 
 													() => true /* label visibility, can control with some logic if you like */, 
 													false /* initial toggle value, eg: Main.settings.someToggle */, 
 													(b) => { /* store toggle value, eg: Main.settings.someToggle = b */ },
-													int priority = 1 /* optional priority setting");
+													int priority = 1 /* optional priority setting */);
 
 			// Button Label Example
             uiLabelButtonExample = uiBox.AddLabel("label-button-example", LabelType.Button, "A Toggle Button Example", Side.right, 
 													() => true /* label visibility, can control with some logic if you like */, 
 													false /* initial toggle value, eg: Main.settings.someToggle */, 
 													(b) => { /* perform action on click */ },
-													int priority = 0 /* optional priority setting");
+													int priority = 0 /* optional priority setting */);
 
 			// Control Timescale Example (only include if you actually want to control that)
             ModMenu.Instance.RegisterTimeScaleTarget(Main.modId, () => {
                 return 1.0f; // returns the target timescale.
             });
-			<#
-			}
-			#>
+
+ <# } #>
         }
 
         public void Update() {
@@ -91,51 +85,47 @@ namespace <#= ModNamespace #> {
 			*/
 
 			
-			<#
-			if (ModMenuExampleCode) {
-			#>
-
+ <# if (ModMenuExampleCode) { #>
 			// Control Setting with Controller Button
             if (PlayerController.Instance.inputController.player.GetButtonSinglePressDown("LB")) {
 
-					/* You can toggle a setting / toggle label for example
-					=======
+				/* You can toggle a setting / toggle label for example
+				=======
 
-                    Main.settings.someToggle = !Main.settings.someToggle;
-                    uiLabelToggleExample.SetToggleValue(Main.settings.someToggle);
+                Main.settings.someToggle = !Main.settings.someToggle;
+                uiLabelToggleExample.SetToggleValue(Main.settings.someToggle);
 
-                    if (Main.settings.someToggle) {
-                        ModMenu.Instance.ShowMessage("Toggle Example: ON");
-                    } else {
-                        ModMenu.Instance.ShowMessage("Toggle Example: OFF");
-                    }
-					*/
-
-					/* Or perform an action
-					=======
-					PlayerController.Instance.ForceBail(); // Force Character to Bail
-
-					ModMenu.Instance.HideCursor(Main.modId); // hide cursor
-					ModMenu.Instance.ShowCursor(Main.modId); // show cursor
-					
-					ModMenu.Instance.EnableMenuHide(Main.modId); // temporary menu hide
-					ModMenu.Instance.DisableMenuHide(Main.modId); // disable temporary menu hide
-
-					*/
-
+                if (Main.settings.someToggle) {
+                    ModMenu.Instance.ShowMessage("Toggle Example: ON");
+                } else {
+                    ModMenu.Instance.ShowMessage("Toggle Example: OFF");
                 }
+
+				*/
+
+				/* Or perform an action
+				=======
+
+				PlayerController.Instance.ForceBail(); // Force Character to Bail
+
+				ModMenu.Instance.HideCursor(Main.modId); // hide cursor
+				ModMenu.Instance.ShowCursor(Main.modId); // show cursor
+					
+				ModMenu.Instance.EnableMenuHide(Main.modId); // temporary menu hide
+				ModMenu.Instance.DisableMenuHide(Main.modId); // disable temporary menu hide
+
+				*/
+
             }
 
 			// Control setting with Keypress
-			ModMenu.Instance.KeyPress(KeyCode.X, 0.2f /* time buffer between presses*/, () => {
+			ModMenu.Instance.KeyPress(KeyCode.X, 0.2f /* time buffer between presses */, () => {
 
 				// Perform an action (same examples from controller button apply)
 
-            });
+			});
 
-			<#
-			}
-			#>
+ <# } #>
         }
 
 		public void FixedUpdate() {
@@ -160,16 +150,15 @@ namespace <#= ModNamespace #> {
 			*/
 
 			
-			<#
-			if (ModMenuExampleCode) {
-			#>
+ <# if (ModMenuExampleCode) { #>
 			// Remove labels from menu
 			uiBox.RemoveLabel("label-text-example");
             uiBox.RemoveLabel("label-toggle-example");
 			uiBox.RemoveLabel("label-button-example");
-			<#
-			}
-			#>
-        }
+
+ <# } #>
+		}
+
     }
+
 }

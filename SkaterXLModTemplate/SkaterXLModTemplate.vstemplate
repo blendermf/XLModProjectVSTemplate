@@ -5,7 +5,8 @@
     <Description>SkaterXLModTemplate</Description>
     <Icon>SkaterXLModTemplate.ico</Icon>
     <ProjectType>CSharp</ProjectType>
-    <RequiredFrameworkVersion>2.0</RequiredFrameworkVersion>
+    <RequiredFrameworkVersion>4.0</RequiredFrameworkVersion>
+    <MaxFrameworkVersion>4.0</MaxFrameworkVersion>
     <SortOrder>1000</SortOrder>
     <TemplateID>3ffbda41-cf87-40e3-bb22-e1f585211e68</TemplateID>
     <CreateNewFolder>true</CreateNewFolder>
@@ -15,6 +16,7 @@
   <TemplateContent>
     <Project File="ProjectTemplate.csproj" ReplaceParameters="true">
       <ProjectItem ReplaceParameters="true" TargetFileName="Properties\AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" OpenInEditor="true" TargetFileName="$safeprojectname$.cs">ModComponent.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true" OpenInEditor="true">Main.cs</ProjectItem>
     </Project>
   </TemplateContent>

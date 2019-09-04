@@ -29,15 +29,14 @@ namespace SkaterXLModTemplateWizard
         public virtual string TransformText()
         {
             this.Write("using UnityEngine;\r\nusing XLShredLib;\r\nusing XLShredLib.UI;\r\n\r\nusing System;\r\nusi" +
-                    "ng System.Linq;\r\n\r\nusing UnityModManagerNet;\r\nusing System.Reflection;\r\n\r\nnamesp" +
-                    "ace ");
+                    "ng System.Linq;\r\n\r\nnamespace ");
             
-            #line 18 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+            #line 17 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModNamespace));
             
             #line default
             #line hidden
-            this.Write(" {\r\n    class ");
+            this.Write(" {\r\n\r\n    class ");
             
             #line 19 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModNamespace));
@@ -45,164 +44,149 @@ namespace SkaterXLModTemplateWizard
             #line default
             #line hidden
             this.Write(" : MonoBehaviour {\r\n\r\n        private ModUIBox uiBox;\r\n\r\n\r\n\t\t/*\r\n\t\t========\r\n\t\tIn" +
-                    "sert mod fields\r\n\t\t========\r\n\t\t*/\r\n\r\n\r\n\t\t");
+                    "sert mod fields\r\n\t\t========\r\n\t\t*/\r\n\r\n\r\n ");
             
             #line 31 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
-
-		if (ModMenuExampleCode) {
-		
+ if (ModMenuExampleCode) { 
             
             #line default
             #line hidden
-            this.Write("\t\t// Example Labels\r\n\t\tprivate ModUIlabel uiLabelTextExample\r\n        private Mod" +
-                    "UILabel uiLabelToggleExample;\r\n\t\tprivate ModUILabel uiLabelButtonExample;\r\n\t\t");
+            this.Write("\t\t// Example Labels\r\n\t\tprivate ModUIlabel uiLabelTextExample;\r\n        private Mo" +
+                    "dUILabel uiLabelToggleExample;\r\n\t\tprivate ModUILabel uiLabelButtonExample;\r\n\r\n ");
             
-            #line 38 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
-
-		}
-		
+            #line 37 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+ } 
             
             #line default
             #line hidden
-            this.Write("\r\n        public void Start() {\r\n            uiBox = ModMenu.Instance.RegisterMod" +
+            this.Write("        public void Start() {\r\n\r\n            uiBox = ModMenu.Instance.RegisterMod" +
                     "Maker(\"");
             
-            #line 43 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+            #line 40 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AuthorID));
             
             #line default
             #line hidden
             this.Write("\", \"");
             
-            #line 43 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+            #line 40 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AuthorName));
             
             #line default
             #line hidden
             this.Write("\");\r\n\r\n\r\n\t\t\t/*\r\n\t\t\t========\r\n\t\t\tInsert mod component setup\r\n\t\t\t========\r\n\t\t\t*/\r\n\r" +
-                    "\n\r\n\t\t\t");
+                    "\n\r\n ");
             
-            #line 53 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
-
-			if (ModMenuExampleCode) {
-			
+            #line 50 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+ if (ModMenuExampleCode) { 
             
             #line default
             #line hidden
             this.Write(@"			// Text Label Example
 			uiLabelTextExample = uiBox.AddLabel(""label-text-example, ""A Text Label Example"", Side side,
 											() => true /* label visibility, can control with some logic if you like */, 
-											int priority = 2 /* optional priority setting"")
+											int priority = 2 /* optional priority setting */)
 
 			// Toggle Label Example
             uiLabelToggleExample = uiBox.AddLabel(""label-toggle-example"", LabelType.Toggle, ""A Toggle Label Example"", Side.right, 
 													() => true /* label visibility, can control with some logic if you like */, 
 													false /* initial toggle value, eg: Main.settings.someToggle */, 
 													(b) => { /* store toggle value, eg: Main.settings.someToggle = b */ },
-													int priority = 1 /* optional priority setting"");
+													int priority = 1 /* optional priority setting */);
 
 			// Button Label Example
             uiLabelButtonExample = uiBox.AddLabel(""label-button-example"", LabelType.Button, ""A Toggle Button Example"", Side.right, 
 													() => true /* label visibility, can control with some logic if you like */, 
 													false /* initial toggle value, eg: Main.settings.someToggle */, 
 													(b) => { /* perform action on click */ },
-													int priority = 0 /* optional priority setting"");
+													int priority = 0 /* optional priority setting */);
 
 			// Control Timescale Example (only include if you actually want to control that)
             ModMenu.Instance.RegisterTimeScaleTarget(Main.modId, () => {
                 return 1.0f; // returns the target timescale.
             });
-			");
-            
-            #line 79 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
 
-			}
-			
+ ");
+            
+            #line 75 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+ } 
             
             #line default
             #line hidden
             this.Write("        }\r\n\r\n        public void Update() {\r\n\t\t\t\r\n\t\t\t\r\n\t\t\t/*\r\n\t\t\t========\r\n\t\t\tRan" +
-                    " every frame\r\n\t\t\t========\r\n\t\t\t*/\r\n\r\n\t\t\t\r\n\t\t\t");
+                    " every frame\r\n\t\t\t========\r\n\t\t\t*/\r\n\r\n\t\t\t\r\n ");
             
-            #line 94 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
-
-			if (ModMenuExampleCode) {
-			
+            #line 88 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+ if (ModMenuExampleCode) { 
             
             #line default
             #line hidden
-            this.Write(@"
-			// Control Setting with Controller Button
+            this.Write(@"			// Control Setting with Controller Button
             if (PlayerController.Instance.inputController.player.GetButtonSinglePressDown(""LB"")) {
 
-					/* You can toggle a setting / toggle label for example
-					=======
+				/* You can toggle a setting / toggle label for example
+				=======
 
-                    Main.settings.someToggle = !Main.settings.someToggle;
-                    uiLabelToggleExample.SetToggleValue(Main.settings.someToggle);
+                Main.settings.someToggle = !Main.settings.someToggle;
+                uiLabelToggleExample.SetToggleValue(Main.settings.someToggle);
 
-                    if (Main.settings.someToggle) {
-                        ModMenu.Instance.ShowMessage(""Toggle Example: ON"");
-                    } else {
-                        ModMenu.Instance.ShowMessage(""Toggle Example: OFF"");
-                    }
-					*/
-
-					/* Or perform an action
-					=======
-					PlayerController.Instance.ForceBail(); // Force Character to Bail
-
-					ModMenu.Instance.HideCursor(Main.modId); // hide cursor
-					ModMenu.Instance.ShowCursor(Main.modId); // show cursor
-					
-					ModMenu.Instance.EnableMenuHide(Main.modId); // temporary menu hide
-					ModMenu.Instance.DisableMenuHide(Main.modId); // disable temporary menu hide
-
-					*/
-
+                if (Main.settings.someToggle) {
+                    ModMenu.Instance.ShowMessage(""Toggle Example: ON"");
+                } else {
+                    ModMenu.Instance.ShowMessage(""Toggle Example: OFF"");
                 }
+
+				*/
+
+				/* Or perform an action
+				=======
+
+				PlayerController.Instance.ForceBail(); // Force Character to Bail
+
+				ModMenu.Instance.HideCursor(Main.modId); // hide cursor
+				ModMenu.Instance.ShowCursor(Main.modId); // show cursor
+					
+				ModMenu.Instance.EnableMenuHide(Main.modId); // temporary menu hide
+				ModMenu.Instance.DisableMenuHide(Main.modId); // disable temporary menu hide
+
+				*/
+
             }
 
 			// Control setting with Keypress
-			ModMenu.Instance.KeyPress(KeyCode.X, 0.2f /* time buffer between presses*/, () => {
+			ModMenu.Instance.KeyPress(KeyCode.X, 0.2f /* time buffer between presses */, () => {
 
 				// Perform an action (same examples from controller button apply)
 
-            });
+			});
 
-			");
+ ");
             
-            #line 136 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
-
-			}
-			
+            #line 128 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+ } 
             
             #line default
             #line hidden
             this.Write("        }\r\n\r\n\t\tpublic void FixedUpdate() {\r\n\t\t\t\r\n\t\t\t\r\n\t\t\t/*\r\n\t\t\t========\r\n\t\t\tRan " +
                     "every physics tick\r\n\t\t\t========\r\n\t\t\t*/\r\n\r\n\t\t\t\r\n\t\t}\r\n\r\n        public void OnDest" +
                     "roy() {\r\n\t\t\t\r\n\t\t\t\r\n\t\t\t/*\r\n\t\t\t========\r\n\t\t\tClean up component\r\n\t\t\t========\r\n\t\t\t*/" +
-                    "\r\n\r\n\t\t\t\r\n\t\t\t");
+                    "\r\n\r\n\t\t\t\r\n ");
             
-            #line 163 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
-
-			if (ModMenuExampleCode) {
-			
+            #line 153 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+ if (ModMenuExampleCode) { 
             
             #line default
             #line hidden
             this.Write("\t\t\t// Remove labels from menu\r\n\t\t\tuiBox.RemoveLabel(\"label-text-example\");\r\n     " +
                     "       uiBox.RemoveLabel(\"label-toggle-example\");\r\n\t\t\tuiBox.RemoveLabel(\"label-b" +
-                    "utton-example\");\r\n\t\t\t");
+                    "utton-example\");\r\n\r\n ");
             
-            #line 170 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
-
-			}
-			
+            #line 159 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\ModComponentTemplate.tt"
+ } 
             
             #line default
             #line hidden
-            this.Write("        }\r\n    }\r\n}\r\n");
+            this.Write("\t\t}\r\n\r\n    }\r\n\r\n}\r\n");
             return this.GenerationEnvironment.ToString();
         }
         
@@ -231,6 +215,32 @@ private string ModNamespace
     get
     {
         return this._ModNamespaceField;
+    }
+}
+
+private string _AuthorIDField;
+
+/// <summary>
+/// Access the AuthorID parameter of the template.
+/// </summary>
+private string AuthorID
+{
+    get
+    {
+        return this._AuthorIDField;
+    }
+}
+
+private string _AuthorNameField;
+
+/// <summary>
+/// Access the AuthorName parameter of the template.
+/// </summary>
+private string AuthorName
+{
+    get
+    {
+        return this._AuthorNameField;
     }
 }
 
@@ -268,6 +278,34 @@ if ((ModNamespaceValueAcquired == false))
     if ((data != null))
     {
         this._ModNamespaceField = ((string)(data));
+    }
+}
+bool AuthorIDValueAcquired = false;
+if (this.Session.ContainsKey("AuthorID"))
+{
+    this._AuthorIDField = ((string)(this.Session["AuthorID"]));
+    AuthorIDValueAcquired = true;
+}
+if ((AuthorIDValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("AuthorID");
+    if ((data != null))
+    {
+        this._AuthorIDField = ((string)(data));
+    }
+}
+bool AuthorNameValueAcquired = false;
+if (this.Session.ContainsKey("AuthorName"))
+{
+    this._AuthorNameField = ((string)(this.Session["AuthorName"]));
+    AuthorNameValueAcquired = true;
+}
+if ((AuthorNameValueAcquired == false))
+{
+    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("AuthorName");
+    if ((data != null))
+    {
+        this._AuthorNameField = ((string)(data));
     }
 }
 

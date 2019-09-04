@@ -35,6 +35,18 @@ namespace SkaterXLModTemplateWizard {
                 MessageBox.Show("Steam executable not found!", "Error");
                 valid = false;
             }
+            if (DisplayName.Text.Trim() == "") {
+                MessageBox.Show("Mod Display Name required!", "Error");
+                valid = false;
+            }
+            if (AuthorID.Text.Trim() == "") {
+                MessageBox.Show("Author ID required!", "Error");
+                valid = false;
+            }
+            if (AuthorName.Text.Trim() == "") {
+                MessageBox.Show("Author Name required!", "Error");
+                valid = false;
+            }
 
             if (valid) {
                 this.Close();

@@ -13,19 +13,14 @@ using Harmony12;
 using System.Reflection;
 using UnityModManagerNet;
 using System;
-<#
-if (UseModMenu) {
-#>
+<# if (UseModMenu) { #>
 using XLShredLib;
-<#
-}
-#>
+<# } #>
 
 namespace <#= ModNamespace #> {
-	<#
-	if (ModSettings) {
-	#>
-	[Serializable]
+
+<# if (ModSettings) { #>
+[Serializable]
 	public class Settings : UnityModManager.ModSettings {
 
 
@@ -52,36 +47,30 @@ namespace <#= ModNamespace #> {
 		}
 
 		public override void Save(UnityModManager.ModEntry modentry) {
+
 			UnityModManager.ModSettings.Save<Settings>(this, modEntry);
+
 		}
 	}
-	<#
-	}
-	#>
 
+<# } #>
 	static class Main
 	{
+
 		public static bool enabled = false;
 		public static Settings settings;
 		public static String modId;
 		public static HarmonyInstance harmonyInstance;
 
 		static bool Load(UnityModManager.ModEntry modEntry) {
-			<#
-			if (ModSettings) {
-			#>
+
+<# if (ModSettings) { #>
 			settings = Settings.Load<Settings>(modEntry);
-			<#
-			}
-			#>
+<# } #>
 			modId = modEntry.Info.Id;
-			<#
-			if (ModSettings) {
-			#>
+<# if (ModSettings) { #>
 			modEntry.OnSaveGUI = OnSaveGUI;
-			<#
-			}
-			#>
+<# } #>
 			modEntry.OnToggle = OnToggle;
 
 
@@ -93,24 +82,23 @@ namespace <#= ModNamespace #> {
 
 
 			return true;
+
 		}
 
 		static bool OnToggle(UnityModManager.ModEntry modEntry, bool value) {
+
 			if (enabled == value) return true; // toggle hasn't actually changed value somehow
             enabled = value;
+
             if (enabled) {
 				// Do patching on enable
                 harmonyInstance = HarmonyInstance.Create(modEntry.Info.Id);
                 harmonyInstance.PatchAll(Assembly.GetExecutingAssembly());
-				<#
-				if (AddModComponent) {
-				#>
+<# if (AddModComponent) { #>
 
 				// Add component to ModMenu gameObject on enable
                 ModMenu.Instance.gameObject.AddComponent<<#= ModNamespace #>>();
-				<#
-				}
-				#>
+<# } #>
 
 
 				/*	
@@ -123,15 +111,11 @@ namespace <#= ModNamespace #> {
             } else {
 				// Remove patches when disabled
                 harmonyInstance.UnpatchAll(harmonyInstance.Id);
-				<#
-				if (AddModComponent) {
-				#>
+<# if (AddModComponent) { #>
 
 				// Remove component from ModMenu gameObject when disabled
                 UnityEngine.Object.Destroy(ModMenu.Instance.gameObject.GetComponent<<#= ModNamespace #>>());
-				<#
-				}
-				#>
+<# } #>
 
 
 				/*	
@@ -142,11 +126,12 @@ namespace <#= ModNamespace #> {
 
 
             }
+
             return true;
+
 		}
-		<#
-		if (ModSettings) {
-		#>
+
+<# if (ModSettings) { #>
 		static void OnSaveGUI(UnityModManager.ModEntry modEntry) {
             settings.Save(modEntry);
 
@@ -159,13 +144,8 @@ namespace <#= ModNamespace #> {
 
 
         }
-		<#
-		}
-		#>
-
-		<#
-		if (UMMSettingsGUI) {
-		#>
+<# } #>
+<# if (UMMSettingsGUI) {#>
 		public static void OnSettingsGUI(UnityModManager.ModEntry modEntry) {
 
 
@@ -187,8 +167,8 @@ namespace <#= ModNamespace #> {
 
 
 		}
-		<#
-		}
-		#>
+
+<# } #>
 	}
+
 }

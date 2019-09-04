@@ -7,9 +7,6 @@ using EnvDTE;
 namespace SkaterXLModTemplateWizard {
     class WizardImplementation : IWizard {
 
-        //private UserInputForm inputForm;
-        private string customMessage;
-
         // Called before opening an item that has OpenInEditor attribute.
         public void BeforeOpeningFile(ProjectItem projectItem) {
 
@@ -43,23 +40,32 @@ namespace SkaterXLModTemplateWizard {
                 templateParameters.Add("ModSettings", form.ModSettings.IsChecked ?? false);
                 templateParameters.Add("AddModComponent", (form.UseModMenu.IsChecked ?? false) && (form.AddModComponent.IsChecked ?? false) );
                 templateParameters.Add("UMMSettingsGUI", (form.ModSettings.IsChecked ?? false) && (form.UMMSettingsGUI.IsChecked ?? false) );
+                templateParameters.Add("ModMenuExampleCode", (form.UseModMenu.IsChecked ?? false) && (form.ModMenuSampleCode.IsChecked ?? false));
                 templateParameters.Add("ModNamespace", replacementsDictionary["$safeprojectname$"]);
+                templateParameters.Add("AuthorID",form.AuthorID.Text);
+                templateParameters.Add("AuthorName", form.AuthorName.Text);
 
                 MainTemplate mainTemplate = new MainTemplate();
                 mainTemplate.Session = templateParameters;
                 mainTemplate.Initialize();
                 string mainContent = mainTemplate.TransformText();
-
-                // Add custom paramaters.
                 replacementsDictionary.Add("$maincontent$", mainContent);
-            } catch(Exception ex) {
+                
+                ModComponentTemplate modComponentTemplate = new ModComponentTemplate();
+                modComponentTemplate.Session = templateParameters;
+                modComponentTemplate.Initialize();
+                string modComponentContent = modComponentTemplate.TransformText();
+                replacementsDictionary.Add("$modcomponentcontent$", modComponentContent);
+
+            }
+            catch (Exception ex) {
                 MessageBox.Show(ex.ToString());
             }
         }
 
         // Only called for item templates, not project templates.
         public bool ShouldAddProjectItem(string filePath) {
-            Console.WriteLine(filePath);
+            Console.WriteLine("************   -   " + filePath);
             return true;
         }
     }
