@@ -18,9 +18,9 @@ namespace SkaterXLModTemplateWizard.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
+    #line 1 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\PatchExamplesTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public partial class ModComponentTemplate : ModComponentTemplateBase
+    public partial class PatchExamplesTemplate : PatchExamplesTemplateBase
     {
 #line hidden
         /// <summary>
@@ -28,182 +28,83 @@ namespace SkaterXLModTemplateWizard.Templates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using UnityEngine;\r\nusing XLShredLib;\r\nusing XLShredLib.UI;\r\n\r\nusing System;\r\nusi" +
-                    "ng System.Linq;\r\n\r\nnamespace ");
+            this.Write(@"using System.Reflection;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Emit;
+
+// This class contains a bunch of examples of the most common methods that I use when patching SkaterXL.
+// More detail and info on all this can be found on the wiki for Harmony (https://github.com/pardeike/Harmony/wiki)
+
+namespace ");
             
-            #line 17 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
+            #line 15 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\PatchExamplesTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModNamespace));
             
             #line default
             #line hidden
-            this.Write(" {\r\n\r\n    class ");
-            
-            #line 19 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ModNamespace));
-            
-            #line default
-            #line hidden
-            this.Write(" : MonoBehaviour {\r\n\r\n        private ModUIBox uiBox;\r\n\r\n\r\n\t\t/*\r\n\t\t========\r\n\t\tIn" +
-                    "sert mod fields\r\n\t\t========\r\n\t\t*/\r\n\r\n\r\n ");
-            
-            #line 31 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
- if (ModMenuExampleCode) { 
-            
-            #line default
-            #line hidden
-            this.Write("\t\t// Example Labels\r\n\t\tprivate ModUIlabel uiLabelTextExample;\r\n        private Mo" +
-                    "dUILabel uiLabelToggleExample;\r\n\t\tprivate ModUILabel uiLabelButtonExample;\r\n\r\n ");
-            
-            #line 37 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
- } 
-            
-            #line default
-            #line hidden
-            this.Write("        public void Start() {\r\n\r\n            uiBox = ModMenu.Instance.RegisterMod" +
-                    "Maker(\"");
-            
-            #line 40 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(AuthorID));
-            
-            #line default
-            #line hidden
-            this.Write("\", \"");
-            
-            #line 40 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(AuthorName));
-            
-            #line default
-            #line hidden
-            this.Write("\");\r\n\r\n\r\n\t\t\t/*\r\n\t\t\t========\r\n\t\t\tInsert mod component setup\r\n\t\t\t========\r\n\t\t\t*/\r\n\r" +
-                    "\n\r\n ");
-            
-            #line 50 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
- if (ModMenuExampleCode) { 
-            
-            #line default
-            #line hidden
-            this.Write(@"			// Text Label Example
-			uiLabelTextExample = uiBox.AddLabel(""label-text-example"", ""A Text Label Example"", Side side,
-											() => true /* label visibility, can control with some logic if you like */, 
-											int priority = 2 /* optional priority setting */)
-
-			// Toggle Label Example
-            uiLabelToggleExample = uiBox.AddLabel(""label-toggle-example"", LabelType.Toggle, ""A Toggle Label Example"", Side.right, 
-													() => true /* label visibility, can control with some logic if you like */, 
-													false /* initial toggle value, eg: Main.settings.someToggle */, 
-													(b) => { /* store toggle value, eg: Main.settings.someToggle = b */ },
-													int priority = 1 /* optional priority setting */);
-
-			// Button Label Example
-            uiLabelButtonExample = uiBox.AddLabel(""label-button-example"", LabelType.Button, ""A Toggle Button Example"", Side.right, 
-													() => true /* label visibility, can control with some logic if you like */, 
-													false /* initial toggle value, eg: Main.settings.someToggle */, 
-													(b) => { /* perform action on click */ },
-													int priority = 0 /* optional priority setting */);
-
-			// Control Timescale Example (only include if you actually want to control that)
-            ModMenu.Instance.RegisterTimeScaleTarget(Main.modId, () => {
-                return 1.0f; // returns the target timescale.
-            });
-
- ");
-            
-            #line 75 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
- } 
-            
-            #line default
-            #line hidden
-            this.Write("        }\r\n\r\n        public void Update() {\r\n\t\t\t\r\n\t\t\t\r\n\t\t\t/*\r\n\t\t\t========\r\n\t\t\tRan" +
-                    " every frame\r\n\t\t\t========\r\n\t\t\t*/\r\n\r\n\t\t\t\r\n ");
-            
-            #line 88 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
- if (ModMenuExampleCode) { 
-            
-            #line default
-            #line hidden
-            this.Write(@"			// Control Setting with Controller Button
-            if (PlayerController.Instance.inputController.player.GetButtonSinglePressDown(""LB"")) {
-
-				/* You can toggle a setting / toggle label for example
-				=======
-
-                Main.settings.someToggle = !Main.settings.someToggle;
-                uiLabelToggleExample.SetToggleValue(Main.settings.someToggle);
-
-                if (Main.settings.someToggle) {
-                    ModMenu.Instance.ShowMessage(""Toggle Example: ON"");
-                } else {
-                    ModMenu.Instance.ShowMessage(""Toggle Example: OFF"");
-                }
-
-				*/
-
-				/* Or perform an action
-				=======
-
-				PlayerController.Instance.ForceBail(); // Force Character to Bail
-
-				ModMenu.Instance.HideCursor(Main.modId); // hide cursor
-				ModMenu.Instance.ShowCursor(Main.modId); // show cursor
-					
-				ModMenu.Instance.EnableMenuHide(Main.modId); // temporary menu hide
-				ModMenu.Instance.DisableMenuHide(Main.modId); // disable temporary menu hide
-
-				*/
-
-            }
-
-			// Control setting with Keypress
-			ModMenu.Instance.KeyPress(KeyCode.X, 0.2f /* time buffer between presses */, () => {
-
-				// Perform an action (same examples from controller button apply)
-
-			});
-
- ");
-            
-            #line 128 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
- } 
-            
-            #line default
-            #line hidden
-            this.Write("        }\r\n\r\n\t\tpublic void FixedUpdate() {\r\n\t\t\t\r\n\t\t\t\r\n\t\t\t/*\r\n\t\t\t========\r\n\t\t\tRan " +
-                    "every physics tick\r\n\t\t\t========\r\n\t\t\t*/\r\n\r\n\t\t\t\r\n\t\t}\r\n\r\n        public void OnDest" +
-                    "roy() {\r\n\t\t\t\r\n\t\t\t\r\n\t\t\t/*\r\n\t\t\t========\r\n\t\t\tClean up component\r\n\t\t\t========\r\n\t\t\t*/" +
-                    "\r\n\r\n\t\t\t\r\n ");
-            
-            #line 153 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
- if (ModMenuExampleCode) { 
-            
-            #line default
-            #line hidden
-            this.Write("\t\t\t// Remove labels from menu\r\n\t\t\tuiBox.RemoveLabel(\"label-text-example\");\r\n     " +
-                    "       uiBox.RemoveLabel(\"label-toggle-example\");\r\n\t\t\tuiBox.RemoveLabel(\"label-b" +
-                    "utton-example\");\r\n\r\n ");
-            
-            #line 159 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
- } 
-            
-            #line default
-            #line hidden
-            this.Write("\t\t}\r\n\r\n    }\r\n\r\n}\r\n");
+            this.Write(".Patches {\r\n/*\r\n\t[HarmonyPatch(typeof(SomeClass), \"SomeMethod\")]\r\n\tstatic class S" +
+                    "omeClass_SomeMethod_Patch {\r\n\r\n\t\t// you can prepare your state here / decide if " +
+                    "the patch should happen\r\n\t\tstatic bool Prepare() {\r\n\t\t\t// Do whatever you need t" +
+                    "o do before patching\r\n\r\n\t\t\treturn true; // do the patch\r\n\t\t}\r\n\r\n\t\t// a patch tha" +
+                    "t runs before the original method\r\n\t\tstatic void Prefix() {\r\n\t\t\t// Do what you n" +
+                    "eed to do\r\n\t\t}\r\n\r\n\t\t\r\n\t\t// a patch that runs before the original method and modi" +
+                    "fies a private member of the class(someMember plus three underscores prefixing i" +
+                    "t), \r\n\t\t// accesses the class instance, and takes a paramater from the original " +
+                    "method (value)\r\n\t\tstatic void Prefix(SomeClass __instance, ref float ___someMemb" +
+                    "er, float value) {\r\n\t\t\t// Do what you need to do\r\n\r\n\t\t\t// set ___someMember\r\n\t\t\t" +
+                    "___someMember = value * 2.0f;\r\n\t\t}\r\n\r\n\t\t// a patch that runs before the original" +
+                    " method, but can cancel the call to the original method and prefixes after this\r" +
+                    "\n\t\tstatic bool Prefix() {\r\n\t\t\t// Do what you need to do\r\n\r\n\t\t\tif(cancelOriginalM" +
+                    "ethod) {\r\n\t\t\t\treturn false;\r\n\t\t\t} else {\r\n\t\t\t\treturn true;\r\n\t\t\t}\r\n\t\t}\r\n\r\n\t\t// Re" +
+                    "place function with return value\r\n\t\tstatic bool Prefix(ref string __result) {\r\n\t" +
+                    "\t\t__result = \"theresult\"; // set the return value\r\n\t\t\treturn false; // skip the " +
+                    "actual function, and any other prefixes after this one, be careful when doing th" +
+                    "is\r\n\t\t}\r\n\r\n\t\t// a patch that runs after the original method\r\n\t\tstatic void Postf" +
+                    "ix() {\r\n\t\t\t// Do what you need to do\r\n\t\t}\r\n\r\n\t\t// Change function with return va" +
+                    "lue\r\n\t\tstatic void Postfix(ref string __result) {\r\n\t\t\t__result = \"theresult\"; //" +
+                    " set the return value\r\n\t\t}\r\n\r\n\t\t// Replace function fully (can also do this with" +
+                    " a prefix that returns false)\r\n\t\tstatic IEnumerable<CodeInstruction> Transpiler(" +
+                    "IEnumerable<CodeInstruction> instructions) {\r\n            yield return new CodeI" +
+                    "nstruction(OpCodes.Ldarg_0); // the first argument, which in the case of a class" +
+                    " instance is the \'this\' variable (this is an implicit paramater)\r\n            yi" +
+                    "eld return new CodeInstruction(OpCodes.Ldarg_1); // load argument 1 onto call st" +
+                    "ack\r\n            yield return new CodeInstruction(OpCodes.Ldarg_2); // load argu" +
+                    "ment 2 onto call stack\r\n            yield return new CodeInstruction(OpCodes.Cal" +
+                    "l, AccessTools.Method(typeof(SomeClassExtensions), nameof(SomeClassExtensions.So" +
+                    "meMethod1)); // call the method, in this case it\'s a c# extension method\r\n      " +
+                    "      yield return new CodeInstruction(OpCodes.Ret); // return\r\n        }\r\n\r\n\t\t/" +
+                    "/ skip some instructions in the original method, and also add our own code (if y" +
+                    "ou want)\r\n\t\tstatic IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstr" +
+                    "uction> instructions) {\r\n\t\t\tvar codes = instructions.ToList();\r\n\r\n\t\t\tint skipCou" +
+                    "nt = 0;\r\n\r\n\t\t\tfor (int i = 0; i < codes.Count; i++) {\r\n\t\t\t\tvar inst = codes[i];\r" +
+                    "\n\r\n\r\n\t\t\t\tif (skipCount > 0) {\r\n                    skipCount--;\r\n               " +
+                    "     continue;\r\n                }\r\n\r\n\t\t\t\t// detect some instruction in the funct" +
+                    "ion where you want to start the skipping of instructions, in this case\r\n\t\t\t\t// w" +
+                    "here a field specific field is being set to a new value\r\n\t\t\t\tif (inst.opcode == " +
+                    "OpCodes.Stfld\r\n                    && (FieldInfo)inst.operand == AccessTools.Fie" +
+                    "ld(typeof(SomeClass), \"_someField\")) {\r\n\r\n\t\t\t\t\tskipCount = 10; // set how many i" +
+                    "nstructions to skip at this point\r\n\r\n\t\t\t\t\tyield return inst; // assuming you\'re " +
+                    "not skipping the instruction we\'re detecting but those after it, otherwise leave" +
+                    " this out\r\n\r\n\t\t\t\t\t// can also insert some new instructions here to replace what " +
+                    "is skipped,, in this case calling an extension method (with no arguments this ti" +
+                    "me)\r\n\t\t\t\t\tyield return new CodeInstruction(OpCodes.Ldarg_0); // implicit this pa" +
+                    "rameter\r\n                    yield return new CodeInstruction(OpCodes.Call, Acce" +
+                    "ssTools.Method(typeof(SomeClassExtensions), nameof(SomeClassExtensions.SomeMetho" +
+                    "d2)));\r\n                    continue;\r\n\t\t\t\t\t\r\n\t\t\t\t}\r\n\r\n\t\t\t\t// if it\'s not an ins" +
+                    "truction we want to modify, return the original instruction at this index\r\n\t\t\t\ty" +
+                    "ield return inst;\r\n\t\t\t}\r\n\r\n\t\t}\r\n\r\n\t}\r\n\r\n\t// C# extension methods\r\n\tpublic static" +
+                    " class SomeClassExtensions {\r\n\t\tpublic static void SomeMethod1(this SomeClass ob" +
+                    ", float arg1, float arg2) {\r\n\t\t\t// perform some action on the SomeClass instance" +
+                    ", can access private fields/methods using Traverse (https://github.com/pardeike/" +
+                    "Harmony/wiki/Utilities#traverse)\r\n\t\t}\r\n\r\n\t\tpublic static void SomeMethod1(this S" +
+                    "omeClass ob) {\r\n\t\t\t// perform some action on the SomeClass instance, can access " +
+                    "private fields/methods using Traverse (https://github.com/pardeike/Harmony/wiki/" +
+                    "Utilities#traverse)\r\n\t\t}\r\n\t}\r\n*/\r\n}");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
-
-private bool _ModMenuExampleCodeField;
-
-/// <summary>
-/// Access the ModMenuExampleCode parameter of the template.
-/// </summary>
-private bool ModMenuExampleCode
-{
-    get
-    {
-        return this._ModMenuExampleCodeField;
-    }
-}
+        #line 1 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\PatchExamplesTemplate.tt"
 
 private string _ModNamespaceField;
 
@@ -218,32 +119,6 @@ private string ModNamespace
     }
 }
 
-private string _AuthorIDField;
-
-/// <summary>
-/// Access the AuthorID parameter of the template.
-/// </summary>
-private string AuthorID
-{
-    get
-    {
-        return this._AuthorIDField;
-    }
-}
-
-private string _AuthorNameField;
-
-/// <summary>
-/// Access the AuthorName parameter of the template.
-/// </summary>
-private string AuthorName
-{
-    get
-    {
-        return this._AuthorNameField;
-    }
-}
-
 
 /// <summary>
 /// Initialize the template
@@ -252,20 +127,6 @@ public virtual void Initialize()
 {
     if ((this.Errors.HasErrors == false))
     {
-bool ModMenuExampleCodeValueAcquired = false;
-if (this.Session.ContainsKey("ModMenuExampleCode"))
-{
-    this._ModMenuExampleCodeField = ((bool)(this.Session["ModMenuExampleCode"]));
-    ModMenuExampleCodeValueAcquired = true;
-}
-if ((ModMenuExampleCodeValueAcquired == false))
-{
-    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("ModMenuExampleCode");
-    if ((data != null))
-    {
-        this._ModMenuExampleCodeField = ((bool)(data));
-    }
-}
 bool ModNamespaceValueAcquired = false;
 if (this.Session.ContainsKey("ModNamespace"))
 {
@@ -278,34 +139,6 @@ if ((ModNamespaceValueAcquired == false))
     if ((data != null))
     {
         this._ModNamespaceField = ((string)(data));
-    }
-}
-bool AuthorIDValueAcquired = false;
-if (this.Session.ContainsKey("AuthorID"))
-{
-    this._AuthorIDField = ((string)(this.Session["AuthorID"]));
-    AuthorIDValueAcquired = true;
-}
-if ((AuthorIDValueAcquired == false))
-{
-    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("AuthorID");
-    if ((data != null))
-    {
-        this._AuthorIDField = ((string)(data));
-    }
-}
-bool AuthorNameValueAcquired = false;
-if (this.Session.ContainsKey("AuthorName"))
-{
-    this._AuthorNameField = ((string)(this.Session["AuthorName"]));
-    AuthorNameValueAcquired = true;
-}
-if ((AuthorNameValueAcquired == false))
-{
-    object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("AuthorName");
-    if ((data != null))
-    {
-        this._AuthorNameField = ((string)(data));
     }
 }
 
@@ -326,7 +159,7 @@ if ((AuthorNameValueAcquired == false))
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "15.0.0.0")]
-    public class ModComponentTemplateBase
+    public class PatchExamplesTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

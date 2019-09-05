@@ -1,0 +1,128 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ parameter name="ModNamespace" type="System.String" #>
+using System.Reflection;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Emit;
+
+// This class contains a bunch of examples of the most common methods that I use when patching SkaterXL.
+// More detail and info on all this can be found on the wiki for Harmony (https://github.com/pardeike/Harmony/wiki)
+
+namespace <#= ModNamespace #>.Patches {
+/*
+	[HarmonyPatch(typeof(SomeClass), "SomeMethod")]
+	static class SomeClass_SomeMethod_Patch {
+
+		// you can prepare your state here / decide if the patch should happen
+		static bool Prepare() {
+			// Do whatever you need to do before patching
+
+			return true; // do the patch
+		}
+
+		// a patch that runs before the original method
+		static void Prefix() {
+			// Do what you need to do
+		}
+
+		
+		// a patch that runs before the original method and modifies a private member of the class(someMember plus three underscores prefixing it), 
+		// accesses the class instance, and takes a paramater from the original method (value)
+		static void Prefix(SomeClass __instance, ref float ___someMember, float value) {
+			// Do what you need to do
+
+			// set ___someMember
+			___someMember = value * 2.0f;
+		}
+
+		// a patch that runs before the original method, but can cancel the call to the original method and prefixes after this
+		static bool Prefix() {
+			// Do what you need to do
+
+			if(cancelOriginalMethod) {
+				return false;
+			} else {
+				return true;
+			}
+		}
+
+		// Replace function with return value
+		static bool Prefix(ref string __result) {
+			__result = "theresult"; // set the return value
+			return false; // skip the actual function, and any other prefixes after this one, be careful when doing this
+		}
+
+		// a patch that runs after the original method
+		static void Postfix() {
+			// Do what you need to do
+		}
+
+		// Change function with return value
+		static void Postfix(ref string __result) {
+			__result = "theresult"; // set the return value
+		}
+
+		// Replace function fully (can also do this with a prefix that returns false)
+		static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
+            yield return new CodeInstruction(OpCodes.Ldarg_0); // the first argument, which in the case of a class instance is the 'this' variable (this is an implicit paramater)
+            yield return new CodeInstruction(OpCodes.Ldarg_1); // load argument 1 onto call stack
+            yield return new CodeInstruction(OpCodes.Ldarg_2); // load argument 2 onto call stack
+            yield return new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(SomeClassExtensions), nameof(SomeClassExtensions.SomeMethod1)); // call the method, in this case it's a c# extension method
+            yield return new CodeInstruction(OpCodes.Ret); // return
+        }
+
+		// skip some instructions in the original method, and also add our own code (if you want)
+		static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
+			var codes = instructions.ToList();
+
+			int skipCount = 0;
+
+			for (int i = 0; i < codes.Count; i++) {
+				var inst = codes[i];
+
+
+				if (skipCount > 0) {
+                    skipCount--;
+                    continue;
+                }
+
+				// detect some instruction in the function where you want to start the skipping of instructions, in this case
+				// where a field specific field is being set to a new value
+				if (inst.opcode == OpCodes.Stfld
+                    && (FieldInfo)inst.operand == AccessTools.Field(typeof(SomeClass), "_someField")) {
+
+					skipCount = 10; // set how many instructions to skip at this point
+
+					yield return inst; // assuming you're not skipping the instruction we're detecting but those after it, otherwise leave this out
+
+					// can also insert some new instructions here to replace what is skipped,, in this case calling an extension method (with no arguments this time)
+					yield return new CodeInstruction(OpCodes.Ldarg_0); // implicit this parameter
+                    yield return new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(SomeClassExtensions), nameof(SomeClassExtensions.SomeMethod2)));
+                    continue;
+					
+				}
+
+				// if it's not an instruction we want to modify, return the original instruction at this index
+				yield return inst;
+			}
+
+		}
+
+	}
+
+	// C# extension methods
+	public static class SomeClassExtensions {
+		public static void SomeMethod1(this SomeClass ob, float arg1, float arg2) {
+			// perform some action on the SomeClass instance, can access private fields/methods using Traverse (https://github.com/pardeike/Harmony/wiki/Utilities#traverse)
+		}
+
+		public static void SomeMethod1(this SomeClass ob) {
+			// perform some action on the SomeClass instance, can access private fields/methods using Traverse (https://github.com/pardeike/Harmony/wiki/Utilities#traverse)
+		}
+	}
+*/
+}

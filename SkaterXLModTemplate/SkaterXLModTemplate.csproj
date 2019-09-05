@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="AssemblyInfo.cs" />
+    <None Include="PatchExamples.cs.template" />
     <None Include="ProjectTemplate.csproj" />
     <None Include="SkaterXLModTemplate.ico" />
   </ItemGroup>

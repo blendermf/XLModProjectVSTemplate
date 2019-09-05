@@ -49,7 +49,7 @@ namespace <#= ModNamespace #> {
 
  <# if (ModMenuExampleCode) { #>
 			// Text Label Example
-			uiLabelTextExample = uiBox.AddLabel("label-text-example, "A Text Label Example", Side side,
+			uiLabelTextExample = uiBox.AddLabel("label-text-example", "A Text Label Example", Side side,
 											() => true /* label visibility, can control with some logic if you like */, 
 											int priority = 2 /* optional priority setting */)
 

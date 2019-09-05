@@ -68,6 +68,12 @@ namespace SkaterXLModTemplateWizard {
                 string infoContent = infoTemplate.TransformText();
                 replacementsDictionary.Add("$infocontent$", infoContent);
 
+                PatchExamplesTemplate patchExamplesTemplate = new PatchExamplesTemplate();
+                patchExamplesTemplate.Session = templateParameters;
+                patchExamplesTemplate.Initialize();
+                string patchExamplesContent = patchExamplesTemplate.TransformText();
+                replacementsDictionary.Add("$patchexamplescontent$", patchExamplesContent);
+
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.ToString());

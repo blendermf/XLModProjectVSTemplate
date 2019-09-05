@@ -18,6 +18,7 @@
       <ProjectItem ReplaceParameters="true" TargetFileName="Properties\AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true" OpenInEditor="true" TargetFileName="Resources\Info.json">Info.json.template</ProjectItem>
       <ProjectItem ReplaceParameters="true" OpenInEditor="true" TargetFileName="$safeprojectname$.cs">ModComponent.cs.template</ProjectItem>
+      <ProjectItem ReplaceParameters="true" OpenInEditor="true" TargetFileName="Patches\PatchExamples.cs">PatchExamples.cs.template</ProjectItem>
       <ProjectItem ReplaceParameters="true" OpenInEditor="true" TargetFileName="Main.cs">Main.cs.template</ProjectItem>
     </Project>
   </TemplateContent>
