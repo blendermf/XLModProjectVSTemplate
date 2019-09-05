@@ -25,8 +25,7 @@ namespace SkaterXLModTemplateWizard {
         }
 
         public static bool CheckURL(string url) {
-            Uri uriResult;
-            return Uri.TryCreate(url.Trim(), UriKind.Absolute, out uriResult)
+            return Uri.TryCreate(url.Trim(), UriKind.Absolute, out Uri uriResult)
                 && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
         }
 

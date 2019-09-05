@@ -45,10 +45,14 @@
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Include="Main.cs" />
+$if$ ( $outputModComponent$ == True )
     <Compile Include="$safeprojectname$.cs" />
+$endif$
 		<Compile Include="Properties\AssemblyInfo.cs" />
+$if$ ( $outputPatchExamples$ == True )
     <Compile Include="Patches\PatchExamples.cs" />
-	</ItemGroup>
+$endif$
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Info.json" />
   </ItemGroup>
