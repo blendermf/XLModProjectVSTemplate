@@ -1,0 +1,11 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ parameter name="GameDirectory" type="System.String" #>
+<#@ parameter name="SteamExecutable" type="System.String" #>
+{
+  "game_directory": "<#= GameDirectory #>",
+  "steam_executable": "<#= SteamExecutable #>"
+}

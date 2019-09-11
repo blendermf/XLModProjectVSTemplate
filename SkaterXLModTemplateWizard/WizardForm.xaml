@@ -83,11 +83,12 @@
                 <CheckBox Name="ModSettings" Checked="ModSettings_Changed" Unchecked="ModSettings_Changed">Include Mod Settings</CheckBox>
                 <CheckBox Name="UMMSettingsGUI" IsEnabled="False">Include Unity Mod Manager Settings GUI</CheckBox>
                 <CheckBox Name="PatchSampleCode">Patch Example Code</CheckBox>
+                <CheckBox Name="AddRepoFile">Add Repository File</CheckBox>
             </StackPanel>
-            <Label Grid.Column="0" Grid.Row="6" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,5,20,5">SkaterXL Game Directory:</Label>
+            <Label Name="GameDirectoryLabel" Grid.Column="0" Grid.Row="6" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,5,20,5">SkaterXL Game Directory:</Label>
             <TextBox Name="GameDirectory" Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" Text="C:\Program Files (x86)\Steam\steamapps\common\Skater XL"></TextBox>
             <Button Name="GameBrowse" Grid.Column="2" Grid.Row="6" Click="GameBrowse_Click">Browse...</Button>
-            <Label Grid.Column="0" Grid.Row="7" HorizontalAlignment="Right" Margin="0,5,20,5">Steam Executable:</Label>
+            <Label Name="SteamExecutableLabel" Grid.Column="0" Grid.Row="7" HorizontalAlignment="Right" Margin="0,5,20,5">Steam Executable:</Label>
             <TextBox Name="SteamExecutable" Grid.Column="1" Grid.Row="7" VerticalAlignment="Center" Text="C:\Program Files (x86)\Steam\Steam.exe"/>
             <Button Name="SteamBrowse" Grid.Column="2" Grid.Row="7" Click="SteamBrowse_Click">Browse...</Button>
         </Grid>

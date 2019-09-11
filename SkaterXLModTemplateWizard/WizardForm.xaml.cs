@@ -20,6 +20,8 @@ namespace SkaterXLModTemplateWizard {
     /// Interaction logic for WizardForm.xaml
     /// </summary>
     public partial class WizardForm {
+        public bool AddingProjectToExistingSolution = false;
+
         public WizardForm() {
             InitializeComponent();
         }

@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
   <TemplateData>
-    <Name>SkaterXLModTemplate</Name>
-    <Description>SkaterXLModTemplate</Description>
-    <Icon>SkaterXLModTemplate.ico</Icon>
+    <Name>SkaterXL Mod Template</Name>
+    <Description>A template for SkaterXL mods that improves set up and usage</Description>
+    <Icon>sxl.ico</Icon>
     <ProjectType>CSharp</ProjectType>
     <RequiredFrameworkVersion>4.0</RequiredFrameworkVersion>
     <MaxFrameworkVersion>4.0</MaxFrameworkVersion>
     <SortOrder>1000</SortOrder>
     <TemplateID>3ffbda41-cf87-40e3-bb22-e1f585211e68</TemplateID>
     <CreateNewFolder>true</CreateNewFolder>
-    <DefaultName>SkaterXLModTemplate</DefaultName>
+    <DefaultName>SkaterXLMod</DefaultName>
     <ProvideDefaultName>true</ProvideDefaultName>
   </TemplateData>
   <TemplateContent>

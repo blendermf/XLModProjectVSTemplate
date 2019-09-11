@@ -52,6 +52,11 @@
   <ItemGroup>
     <Compile Include="BaseDialogWindow.cs" />
     <Compile Include="Templates\BaseTemplate.cs" />
+    <Compile Include="Templates\ConfigTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConfigTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Templates\InfoTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -73,18 +78,39 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PatchExamplesTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Templates\RepositoryTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RepositoryTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="WizardForm.xaml.cs">
       <DependentUpon>WizardForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="WizardImplementation.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".gitignore">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="key.snk" />
+    <None Include="launch_game.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="post_build.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="pre_build.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Templates\ConfigTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ConfigTemplate.cs</LastGenOutput>
+    </Content>
     <Content Include="Templates\InfoTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>InfoTemplate.cs</LastGenOutput>
@@ -101,10 +127,17 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>PatchExamplesTemplate.cs</LastGenOutput>
     </Content>
+    <Content Include="Templates\RepositoryTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>RepositoryTemplate.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="envdte, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="envdte80, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.Shell.15.0, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.TemplateWizardInterface, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />

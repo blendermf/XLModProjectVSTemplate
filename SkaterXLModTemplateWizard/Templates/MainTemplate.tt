@@ -46,7 +46,7 @@ namespace <#= ModNamespace #> {
 
 		}
 
-		public override void Save(UnityModManager.ModEntry modentry) {
+		public override void Save(UnityModManager.ModEntry modEntry) {
 
 			UnityModManager.ModSettings.Save<Settings>(this, modEntry);
 
@@ -58,7 +58,9 @@ namespace <#= ModNamespace #> {
 	{
 
 		public static bool enabled = false;
+<# if (ModSettings) { #>
 		public static Settings settings;
+<# } #>
 		public static String modId;
 		public static HarmonyInstance harmonyInstance;
 
