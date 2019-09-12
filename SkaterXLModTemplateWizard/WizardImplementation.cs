@@ -114,6 +114,10 @@ namespace SkaterXLModTemplateWizard {
                 
                 form.ShowDialog();
 
+                if (form.Cancelled) {
+                    throw new WizardBackoutException();
+                }
+
                 templateParameters = new Dictionary<string, object> {
                     { "UseModMenu", form.UseModMenu.IsChecked ?? false },
                     { "ModSettings", form.ModSettings.IsChecked ?? false },
@@ -165,12 +169,20 @@ namespace SkaterXLModTemplateWizard {
                 patchExamplesTemplate.Initialize();
                 string patchExamplesContent = patchExamplesTemplate.TransformText();
                 replacementsDictionary.Add("$patchexamplescontent$", patchExamplesContent);
-
-
-
             }
             catch (Exception ex) {
-                MessageBox.Show(ex.ToString());
+                String destinationDirectory = replacementsDictionary["$destinationdirectory$"];
+                if (Directory.Exists(destinationDirectory)) {
+                    Directory.Delete(destinationDirectory, true);
+
+                    try {
+                        Directory.GetParent(destinationDirectory).Delete();
+                    } catch {}
+                }
+
+                Console.WriteLine(ex);
+
+                throw ex;
             }
         }
 

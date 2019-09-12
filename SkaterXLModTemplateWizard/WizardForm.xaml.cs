@@ -21,7 +21,7 @@ namespace SkaterXLModTemplateWizard {
     /// </summary>
     public partial class WizardForm {
         public bool AddingProjectToExistingSolution = false;
-
+        public bool Cancelled = false;
         public WizardForm() {
             InitializeComponent();
         }
@@ -87,6 +87,7 @@ namespace SkaterXLModTemplateWizard {
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e) {
+            Cancelled = true;
             this.Close();
         }
 
