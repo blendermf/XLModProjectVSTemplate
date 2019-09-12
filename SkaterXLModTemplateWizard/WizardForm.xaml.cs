@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using System.Text.RegularExpressions;
 
 namespace SkaterXLModTemplateWizard {
     /// <summary>
@@ -64,19 +65,22 @@ namespace SkaterXLModTemplateWizard {
                 MessageBox.Show("Author ID required!", "Error");
                 valid = false;
             }
+            if (Regex.IsMatch(AuthorID.Text, @"[^a-z0-9_]|^_|^[0-9]")) {
+                MessageBox.Show("Author ID must be lowercase alphanumeric(with optional underscores), and must start with a letter", "Error");
+            }
             if (AuthorName.Text.Trim() == "") {
                 MessageBox.Show("Author Name required!", "Error");
                 valid = false;
             }
             if (ModHomepage.Text.Trim() != "") {
                 if (!CheckURL(ModHomepage.Text)) {
-                    MessageBox.Show("Invalid URL! Mod Homepage must either be left blank, or a valid url");
+                    MessageBox.Show("Invalid URL! Mod Homepage must either be left blank, or a valid url", "Error");
                     valid = false;
                 }
             }
             if (ModRepo.Text.Trim() != "") {
                 if (!CheckURL(ModRepo.Text)) {
-                    MessageBox.Show("Invalid URL! Mod Repo must either be left blank, or a valid url");
+                    MessageBox.Show("Invalid URL! Mod Repo must either be left blank, or a valid url", "Error");
                     valid = false;
                 }
             }
