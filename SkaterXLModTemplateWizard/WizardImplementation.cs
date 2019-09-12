@@ -6,8 +6,10 @@ using System.Linq;
 using System.IO;
 using EnvDTE;
 using EnvDTE80;
+using VSLangProj;
 
 namespace SkaterXLModTemplateWizard {
+    using Microsoft.VisualStudio.Shell;
     using Templates;
 
     class WizardImplementation : IWizard {
@@ -83,6 +85,8 @@ namespace SkaterXLModTemplateWizard {
             } else {
                 var repo = solItems.ProjectItems.Cast<ProjectItem>().FirstOrDefault(p => p.Name == "repository.json");
             }
+
+            (project.Object as VSProject)?.Refresh();
         }
 
         // Only called for item templates, not project templates.
@@ -105,13 +109,7 @@ namespace SkaterXLModTemplateWizard {
 
                 var solItems = dte.Solution.Projects.Cast<Project>().FirstOrDefault(p => p.Name == "Solution Items" || p.Kind == EnvDTE.Constants.vsProjectItemKindSolutionItems);
                 if (solItems != null) {
-                    form.GameDirectoryLabel.Visibility = System.Windows.Visibility.Collapsed;
-                    form.GameDirectory.Visibility = System.Windows.Visibility.Collapsed;
-                    form.GameBrowse.Visibility = System.Windows.Visibility.Collapsed;
-                    form.SteamExecutableLabel.Visibility = System.Windows.Visibility.Collapsed;
-                    form.SteamExecutable.Visibility = System.Windows.Visibility.Collapsed;
-                    form.SteamBrowse.Visibility = System.Windows.Visibility.Collapsed;
-                    form.AddRepoFile.Visibility = System.Windows.Visibility.Collapsed;
+                    form.HideSolutionOptions();
                 }
                 
                 form.ShowDialog();

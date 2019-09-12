@@ -51,7 +51,7 @@ namespace SkaterXLModTemplateWizard.Templates
             
             #line default
             #line hidden
-            this.Write("\t\t// Example Labels\r\n\t\tprivate ModUIlabel uiLabelTextExample;\r\n        private Mo" +
+            this.Write("\t\t// Example Labels\r\n\t\tprivate ModUILabel uiLabelTextExample;\r\n        private Mo" +
                     "dUILabel uiLabelToggleExample;\r\n\t\tprivate ModUILabel uiLabelButtonExample;\r\n\r\n ");
             
             #line 37 "C:\Users\blendermf\Documents\Visual Studio 2017\Projects\SkaterXLModTemplate\SkaterXLModTemplateWizard\Templates\ModComponentTemplate.tt"
@@ -83,23 +83,23 @@ namespace SkaterXLModTemplateWizard.Templates
             #line default
             #line hidden
             this.Write(@"			// Text Label Example
-			uiLabelTextExample = uiBox.AddLabel(""label-text-example"", ""A Text Label Example"", Side side,
+			uiLabelTextExample = uiBox.AddLabel(""label-text-example"", ""A Text Label Example"", Side.left,
 											() => true /* label visibility, can control with some logic if you like */, 
-											int priority = 2 /* optional priority setting */)
+											2 /* optional priority setting */);
 
 			// Toggle Label Example
-            uiLabelToggleExample = uiBox.AddLabel(""label-toggle-example"", LabelType.Toggle, ""A Toggle Label Example"", Side.right, 
+            uiLabelToggleExample = uiBox.AddLabel(""label-toggle-example"", LabelType.Toggle, ""A Toggle Label Example"", Side.left, 
 													() => true /* label visibility, can control with some logic if you like */, 
 													false /* initial toggle value, eg: Main.settings.someToggle */, 
 													(b) => { /* store toggle value, eg: Main.settings.someToggle = b */ },
-													int priority = 1 /* optional priority setting */);
+													1 /* optional priority setting */);
 
 			// Button Label Example
-            uiLabelButtonExample = uiBox.AddLabel(""label-button-example"", LabelType.Button, ""A Toggle Button Example"", Side.right, 
+            uiLabelButtonExample = uiBox.AddLabel(""label-button-example"", LabelType.Button, ""A Toggle Button Example"", Side.left, 
 													() => true /* label visibility, can control with some logic if you like */, 
 													false /* initial toggle value, eg: Main.settings.someToggle */, 
 													(b) => { /* perform action on click */ },
-													int priority = 0 /* optional priority setting */);
+													0 /* optional priority setting */);
 
 			// Control Timescale Example (only include if you actually want to control that)
             ModMenu.Instance.RegisterTimeScaleTarget(Main.modId, () => {

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
-
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace SkaterXLModTemplateWizard {
     /// <summary>
@@ -31,17 +31,30 @@ namespace SkaterXLModTemplateWizard {
                 && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
         }
 
+        public void HideSolutionOptions() {
+            GameDirectoryLabel.Visibility = System.Windows.Visibility.Collapsed;
+            GameDirectory.Visibility = System.Windows.Visibility.Collapsed;
+            GameBrowse.Visibility = System.Windows.Visibility.Collapsed;
+            SteamExecutableLabel.Visibility = System.Windows.Visibility.Collapsed;
+            SteamExecutable.Visibility = System.Windows.Visibility.Collapsed;
+            SteamBrowse.Visibility = System.Windows.Visibility.Collapsed;
+            AddRepoFile.Visibility = System.Windows.Visibility.Collapsed;
+            AddingProjectToExistingSolution = true;
+        }
+
         private void Submit_Click(object sender, RoutedEventArgs e) {
             bool valid = true;
-            if (!File.Exists(this.GameDirectory.Text.Trim() + @"\SkaterXL.exe")) {
-                // not game directory
-                MessageBox.Show("Invalid game directory!", "Error");
-                valid = false;
-            }
-            if (!File.Exists(this.SteamExecutable.Text.Trim())) {
-                // not steam executable
-                MessageBox.Show("Steam executable not found!", "Error");
-                valid = false;
+            if (!AddingProjectToExistingSolution) {
+                if (!File.Exists(this.GameDirectory.Text.Trim() + @"\SkaterXL.exe")) {
+                    // not game directory
+                    MessageBox.Show("Invalid game directory!", "Error");
+                    valid = false;
+                }
+                if (!File.Exists(this.SteamExecutable.Text.Trim())) {
+                    // not steam executable
+                    MessageBox.Show("Steam executable not found!", "Error");
+                    valid = false;
+                }
             }
             if (DisplayName.Text.Trim() == "") {
                 MessageBox.Show("Mod Display Name required!", "Error");
@@ -78,11 +91,35 @@ namespace SkaterXLModTemplateWizard {
         }
 
         private void SteamBrowse_Click(object sender, RoutedEventArgs e) {
-
+            var dialog = new CommonOpenFileDialog {
+                Title = "Select Steam.exe",
+                IsFolderPicker = false,
+                InitialDirectory = System.IO.Path.GetDirectoryName(SteamExecutable.Text),
+                EnsureFileExists = true,
+                EnsurePathExists = true,
+                EnsureValidNames = true,
+                Multiselect = false,
+                ShowPlacesList = true
+            };
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok) {
+                SteamExecutable.Text = dialog.FileName;
+            }
         }
 
         private void GameBrowse_Click(object sender, RoutedEventArgs e) {
-
+            var dialog = new CommonOpenFileDialog {
+                Title = "Select SkaterXL Game Directory",
+                IsFolderPicker = true,
+                InitialDirectory = Directory.GetParent(GameDirectory.Text).FullName,
+                EnsureFileExists = true,
+                EnsurePathExists = true,
+                EnsureValidNames = true,
+                Multiselect = false,
+                ShowPlacesList = true
+            };
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok) {
+                GameDirectory.Text = dialog.FileName;
+            }
         }
 
         private void UseModMenu_Changed(object sender, RoutedEventArgs e) {
