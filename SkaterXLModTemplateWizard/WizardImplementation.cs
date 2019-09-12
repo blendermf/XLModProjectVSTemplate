@@ -87,6 +87,15 @@ namespace SkaterXLModTemplateWizard {
             }
 
             (project.Object as VSProject)?.Refresh();
+
+            foreach (Configuration config in project.ConfigurationManager) {
+                config.Properties.Item("StartAction").Value = 1; // Launch external program
+                config.Properties.Item("StartProgram").Value = @"C:\Windows\system32\WindowsPowerShell\v1.0\powershell.exe";
+                config.Properties.Item("StartArguments").Value = @"-ExecutionPolicy Unrestricted -File ""./launch_game.ps1""";
+                config.Properties.Item("StartWorkingDirectory").Value = @"../../../";
+            }
+
+            project.Save(project.FileName);
         }
 
         // Only called for item templates, not project templates.
